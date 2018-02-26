@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <a href="/item/add">add</a>
+    <table>
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Name</th>
+                <th>Brand</th>
+                <th>Code Item</th>
+                <th>List Supplier</th>
+                <th>Process</th>
+            </tr>
+        </thead>
+        <tbody>
+            <%data.forEach(element =>{%>
+                <tr>
+                    <td><%=element.id%></td>
+                    <td><%=element.name%></td>
+                    <td><%=element.brand%></td>
+                    <td><%=element.codeItem%></td>
+                    <td>
+                        <% if(element.SupplierItems.length > 0){%>
+                            <% element.SupplierItems.forEach(each=>{%>
+                                <span><%=each.Supplier.name%></span>
+                                <span><%=helper(each.price)%></span>    
+                            <%})%>
+                            
+                            
+                        <%}else{%>
+                            <span>No Supplier Yet</span>
+                        <%}%>
+                    </td>
+                    <td>
+                        <a href="/item/edit/<%=element.id%>">Edit</a>
+                        <a href="/item/delete/<%=element.id%>" onclick="return confirm('Yakin mau delete Item: \n Klik cancel untuk membatalkan')">Delete</a>
+                    </td>
+                </tr>
+            <%})%>
+        </tbody>
+    </table>
+</body>
+</html>

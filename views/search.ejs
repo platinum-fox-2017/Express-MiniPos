@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Search Page</h1>
+    <form action="/search" method="post">
+        <label for="">Name Item</label>
+        <input type="text" name="name">
+        <label for="">Min Price</label>
+        <input type="number" name="minPrice">
+        <label for="">Max Price</label>
+        <input type="number" name="maxPrice">
+        <button type="submit">Submit</button>
+    </form>
+
+    <h1>Search Result</h1>
+    <table>
+        <thead>
+            <tr>
+                <td>ID</td>
+                <td>Item Name</td>
+                <td>Supplier Name</td>
+                <td>Price</td>
+            </tr>
+        </thead>
+        <tbody>
+                <%for(let [index,element] of data.entries()){%>
+                <tr>
+                    <td><%=index+1%></td>
+                    <td><%=element.Item.name%></td>
+                    <td><%=element.Supplier.name%></td>
+                    <td><%=helper(element.price)%></td>
+                </tr>
+            <%}%>
+            
+        </tbody>
+    </table>
+</body>
+</html>

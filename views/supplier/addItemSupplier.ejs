@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <a href="/supplier/addItem/<%=supplier.id%>/back">back</a>
+    <h1>Add Item For Supplier</h1>
+    <br>
+    <span>Name</span><span><%=supplier.name%></span>
+    <br>
+    <span>City</span><span><%=supplier.kota%></span>
+    <span>Detail</span><br>
+    <%supplier.SupplierItems.forEach(element =>{%>
+        <span><%=element.Item.name%></span> <span> @ <%=helper(element.price)%></span>
+    <%})%>
+    
+
+    <form action="/supplier/addItem/<%=supplier.id%>" method="post">
+        <select name="itemId" id="">
+            <%item.forEach(element =>{%>
+                <option value="<%=element.id%>"><%=element.name%></option>
+            <%})%>
+        </select>
+        <input type="number" name="price" placeholder="put the price">
+        <button type="submit">Submit</button>
+    </form>
+
+
+</body>
+</html>
