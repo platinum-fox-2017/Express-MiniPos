@@ -21,6 +21,7 @@
 					<th>Name</th>
 					<th>City</th>
 					<th>List Item</th>
+					<th>Add Item</th>
 					<th>Action</th>
 				</tr>
 			</thead>
@@ -31,6 +32,18 @@
 					<td><%=supplier.id%></td>
 					<td><%=supplier.name%></td>
 					<td><%=supplier.city%></td>
+					<%if(supplier.Items.length !== 0){%>
+						<td>
+								<ol>
+									<%supplier.Items.forEach(item=>{%>
+											<li><%=item.name%></li>						
+									<%})%>
+							</ol>
+						</td>
+						<%}else{%>
+							<td>No Item yet</td>
+				<%}%>
+				<td><a href = "/suppliers/<%=supplier.id%>/additem"><button type="button" class="btn btn-primary">Assign Item</button></a></td>
 					<td><a href = "/suppliers/edit/<%=supplier.id%>"><button type="button" class="btn btn-info">Edit</button></a>  <a href = "/suppliers/delete/<%=supplier.id%>" onclick="return confirm('Delete supplier ?')"><button type="button" class="btn btn-danger">Delete</button></a> </td>
 				</tr>
 				<%})%>
