@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>ITEMS</title>
+  </head>
+  <h2>ITEMS</h2>
+  <body>
+    <form action="/suppliers/add" method="post">
+      <input type="text" name="name" value="" placeholder="your name here">
+      <input type="text" name="brand" value="" placeholder="your brand here">
+      <input type="text" name="codeitem" value="" placeholder="your item code here">
+      <button type="button" name="button">ADD NEW ITEM</button>
+    </form>
+    <table border = '1'>
+      <thead>
+        <td>ID</td>
+        <td>NAME</td>
+        <td>BRAND</td>
+        <td>ITEM CODE</td>
+      </thead>
+      <%dataItems.forEach(data=>{%>
+        <tr>
+          <td><%=data.id%></td>
+          <td><%=data.name%></td>
+          <td><%=data.brand%></td>
+          <td><%=data.codeitem%></td>
+          
+        </tr>
+      <%})%>
+    </table>
+  </body>
+</html>
