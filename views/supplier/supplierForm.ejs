@@ -1,0 +1,34 @@
+<%include ../index%>
+<container>
+        <center>
+          <form action="/suppliers/<%=action==='add' ? 'add': 'edit'%>/<%=supplier.id%> " method="POST">
+            <table>
+              <tbody>
+                <tr>
+                  <td>Nama</td>
+                  <td>:</td>
+                  <td>
+                    <input type="text" name="name" value="<%=supplier.name%>">
+                  </td>
+                </tr>
+                <tr>
+                  <td>Kota</td>
+                  <td>:</td>
+                  <td>
+                    <input type="text" name="kota" value="<%=supplier.kota%>">
+                  </td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td>
+                    <button class="btn btn-primary"><%=action==='add' ? 'Add Supplier': 'Edit Supplier' %></button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </form>
+        </center>
+      </container>
+      
+      

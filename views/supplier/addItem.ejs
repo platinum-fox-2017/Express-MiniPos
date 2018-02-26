@@ -1,0 +1,50 @@
+<%include ../index%>
+<container>
+        <center>
+            <table>
+              <tbody>
+                <tr>
+                  <td>Name</td>
+                  <td>&nbsp;:&nbsp;</td>
+                  <td><%=supplier.name%></td>
+                </tr>
+                <tr>
+                  <td>City</td>
+                  <td>&nbsp;:&nbsp;</td>
+                  <td><%=supplier.kota%></td>
+                </tr>
+                <tr>
+                    <td>Address</td>
+                    <td>&nbsp;:&nbsp;</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>List Item</td>
+                    <td>&nbsp;:&nbsp;</td>
+                    <% if (supplier.Items.length === 0){%>
+                        <td>no item yet</td>
+                   <%}else{%>
+                    <td>
+                            <ul>
+                                <%supplier.Items.forEach(data=>{%>
+                                <li>data.name</li>
+                            <%})%>
+                            </ul>
+                       
+                    </td>
+                   <%}%>
+                </tr>
+              </tbody>
+            </table>
+            <form action="/suppliers/<%=supplier.id%>/addItem" method="post">
+                <select name ='ItemId'>
+                    <%item.forEach(data=>{%>
+                        <option value="<%=data.id%>"><%=data.name%></option>
+                    <%})%>
+                </select>
+                
+            </form>
+        </center>
+      </container>
+      
+      

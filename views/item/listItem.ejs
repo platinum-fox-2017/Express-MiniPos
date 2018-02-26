@@ -1,0 +1,45 @@
+<%include ../index%>
+<div class="container">
+    <a href="/items/add">
+        <button class="btn btn-primary">Add Item</button>
+    </a>
+   <center>
+        <table class="table table-striped">
+            <thead>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Brand</th>
+                <th>Code Item</th>
+                <th>List Supplier</th>
+                <th>Action</th>
+            </thead>
+            <tbody>
+                <%item.forEach(data=>{%>
+                <tr>
+                    <td><%=data.id%></td>
+                    <td><%=data.name%></td>
+                    <td><%=data.brand%></td>
+                    <td><%=data.codeItem%></td>
+                    <%if (data.Suppliers.length !== 0){%>
+                            <td>                             
+                                <ul>
+                                    <%data.Suppliers.forEach(supplier=>{%>   
+                                    <li><%=supplier.name%></li>
+                                    <%})%>
+                                </ul>
+                            </td>
+                    <%}else{%>
+                        <td>No item yet</td>
+                    <%}%>     
+                    <td></td>
+                    <td>
+                        <a href="/items/edit/<%=data.id%>"><button>Edit</button></a>
+                        <a href="/items/delete/<%=data.id%>"><button>Delete</button></a>
+                    </td>
+                </tr>
+                <%})%>
+            </tbody>
+        </table>
+   </center>
+</div>
+
