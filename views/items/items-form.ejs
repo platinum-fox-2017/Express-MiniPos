@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Items Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="/main.css" />
+    <script src="/main.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+
+</head>
+
+<body>
+    <div class="col-md-6 offset-md-3">
+        <h1 class="text-center">Detail Item</h1>
+        <a href="/items">Show All Items</a>
+        <form action="<%= action %>" method="post">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" name="name" value="<%= data.name %>">
+            </div>
+            <div class="form-group">
+                <label for="city">Brand</label>
+                <input type="text" class="form-control" name="brand" value="<%= data.brand %>">
+            </div>
+            <div class="form-group">
+                <label for="city">CodeItem</label>
+                <input type="text" class="form-control" name="codeitem" value="<%= data.codeitem %>">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</body>
+
+</html>

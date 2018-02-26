@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>All Items</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <div class="col-md-6 offset-md-3">
+            <h1 class="text-center">List Items</h1>
+            <a href="/items/add">ADD Items</a>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Brand</th>
+                        <th scope="col">CodeItem</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% datas.map((data) => { %>
+                        <tr>
+                            <td>
+                                <%= data.id %>
+                            </td>
+                            <td>
+                                <%= data.name %>
+                            </td>
+                            <td>
+                                <%= data.brand %>
+                            </td>
+                            <td>
+                                <%= data.codeitem %>
+                            </td>
+                            <td>
+                                <a href="items/edit/<%= data.id %>" class="btn btn-info">Edit</a>
+                                <a href="items/delete/<%= data.id %>" class="btn btn-danger">Delete</button>
+                            </td>
+                        </tr>
+                        <% })%>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>
