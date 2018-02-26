@@ -11,7 +11,6 @@ Router.get('/',(req,res)=>{
     Supplier.findAll({
         include: [{model: SupplierItem,include: [Item]}]
     }).then(result=>{
-        console.log(result[0].SupplierItems[0].price)
         res.render('supplier/supplier',{
             data: result,
             helper: require('../helper/toLocalString'),
@@ -63,7 +62,6 @@ Router.get('/addItem/:id',(req,res)=>{
                 { model: SupplierItem, include: [Item]}
              ],
         }).then(supplierData=>{
-            console.log(supplierData.SupplierItems[0].Item)
             res.render('supplier/addItemSupplier',{
                 item: itemData,
                 supplier: supplierData,

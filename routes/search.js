@@ -12,6 +12,7 @@ Router.get('/',(req,res)=>{
     SupplierItem.findAll({
         include:[{model:Item},{model: Supplier}]
     }).then((result)=>{
+        console.log(JSON.parse(JSON.stringify(result)))
         res.render('search',{
             data: result,
             helper: require('../helper/toLocalString')

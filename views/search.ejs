@@ -32,8 +32,12 @@
                 <%for(let [index,element] of data.entries()){%>
                 <tr>
                     <td><%=index+1%></td>
+                    <%if(element.Item){%>
                     <td><%=element.Item.name%></td>
+                    <%}%>
+                    <% if(element.Supplier){%>
                     <td><%=element.Supplier.name%></td>
+                    <%}%>
                     <td><%=helper(element.price)%></td>
                 </tr>
             <%}%>

@@ -26,11 +26,11 @@
                     <td><%=element.name%></td>
                     <td><%=element.kota%></td>
                     <td>
-                        <%if(element.SupplierItems.length > 0){%>
+                        <%if(element.SupplierItems && element.SupplierItems.length > 0){%>
                             <%element.SupplierItems.forEach(each =>{%>
                                 <span><%=each.Item.name%></span>            
+                                <span>@ <%=helper(element.SupplierItems[0].price)%></span>                            
                             <%})%>
-                            <span>@ <%=helper(element.SupplierItems[0].price)%></span>                            
                         <%}else{%>
                             <span>No Item Yet</span>
                         <%}%>

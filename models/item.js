@@ -1,4 +1,5 @@
-'use strict';
+'use strict'
+
 module.exports = (sequelize, DataTypes) => {
   var Item = sequelize.define('Item', {
     name: DataTypes.STRING,
@@ -29,17 +30,22 @@ module.exports = (sequelize, DataTypes) => {
         })
       }
     }
-  }, {
-    classMethods: {
-      associate: function(models) {
-        // associations can be defined here
+  },{
+    hooks:{
+      beforeCreate: function(user,options){
+        console.log(user)
+      },
+      beforeDestroy: function(item,options){
+        
       }
     }
   });
 
   Item.associate = function (models){
     Item.hasMany(models.SupplierItem,{
-      foreignKey: 'ItemId'
+      foreignKey: 'ItemId',
+      onDelete : 'CASCADE',
+      hooks: true
     })
 
     Item.belongsToMany(models.Supplier,{

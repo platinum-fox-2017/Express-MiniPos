@@ -8,6 +8,7 @@ const SupplierItem = Model.SupplierItem
 
 // Code
 Router.get('/',(req,res)=>{
+    console.log(Item)
     Item.findAll({
         include: [{model:SupplierItem,include: [Supplier]}]
     }).then(result=>{
@@ -83,9 +84,24 @@ Router.post('/edit/:id',(req,res)=>{
 Router.get('/delete/:id',(req,res)=>{
     let idItem = Number(req.params.id)
     Item.destroy({
-        where:{id: idItem}
-    }).then(result=>{
-        res.redirect('/item')
+        where:{id: idItem},
+        individualHooks : true
+    }).then((result)=>{
+        SupplierItem.findAll({where:{
+            ItemId:idItem
+        }}).then(dataConjunction=>{
+            console.log(dataConjunction.length)
+            console.log(dataConjunction)
+            const destroy = dataConjunction.map(each=>{
+                return new Promise((resolve,reject)=>{
+                    SupplierItem.destroy({where:{ItemId:each.ItemId}}).then(resolve(each))
+                })
+            })
+            
+            Promise.all(destroy).then(done=>{
+                res.redirect('/item')
+            })
+        })
     })
 })
 

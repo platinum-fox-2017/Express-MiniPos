@@ -20,7 +20,8 @@ module.exports = (sequelize, DataTypes) => {
 
     // SupplierItem -- > Item
     SupplierItem.belongsTo(models.Item,{
-      foreignKey: 'ItemId'
+      foreignKey: 'ItemId',
+      hooks: true
     })
   }
   return SupplierItem;
