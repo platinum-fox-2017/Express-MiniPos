@@ -1,0 +1,42 @@
+<div>
+    <a href='/'>Home</a>
+    <a href='/suppliers'>Suppliers</a>
+    <a href='/items'>Items</a> 
+    <a href='/search'>Search</a>    
+</div>
+
+<div>
+    <h1>Suppliers</h1>
+    <button onclick="location.href ='/suppliers/add';">Add Suppliers</button>    
+</div>
+
+<div>
+    <table>
+        <tr>
+            <th><h3>Id</h3></th>
+            <th><h3>Name</h3></th>
+            <th><h3>City</h3></th>
+            <th><h3>List Item</h3></th>
+            <th><h3>Add Item</h3></th>
+            <th><h3>Action</h3></th>
+        </tr>
+        <%data.forEach(data => {%>
+            <tr>
+                <th><h4><%=data.id%></h4></th>
+                <th><h4><%=data.name%></h4></th>
+                <th><h4><%=data.city%></h4></th>
+                <th>
+                    <%if(data.Items.length>0) {%>
+                        <%for(let i in data.Items) {%>
+                            <li><%=data.Items[i].name%> @ <%=data.SupplierItems[i].price%></li>
+                        <%}%>
+                    <%} else {%>
+                        <h4>No item yet</h4>
+                    <%}%>
+                </th>
+                <th><h4><button onclick="location.href ='/suppliers/<%=data.id%>/additem';">Assign Item</button>
+                <th><h4><button onclick="location.href ='/suppliers/edit/<%=data.id%>';">Edit</button> || <a href="/suppliers/delete/<%=data.id%>"><button onclick="return confirm('Are you sure to delete <%=data.name%>')">Delete</button></a></h4></th>
+            </tr>
+        <%})%>
+    </table>
+</div>

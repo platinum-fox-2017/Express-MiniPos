@@ -1,0 +1,28 @@
+<div>
+    <a href='/'>Home</a>
+    <a href='/suppliers'>Suppliers</a>
+    <a href='/items'>Items</a> 
+    <a href='/search'>Search</a>    
+</div>
+    
+<div>
+    <h1>Suppliers</h1>
+</div>
+
+<div>
+    <form action="" method="post">
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>:</th>
+                <th><input type="text" name="name" value="<%=data.name%>"></th>
+            </tr>
+            <tr>
+                <th>City</th>
+                <th>:</th>
+                <th><input type="text" name="city" value="<%=data.city%>"></th>
+            </tr>
+        </table>
+        <input type="submit" value="Submit">
+    </form>
+</div>

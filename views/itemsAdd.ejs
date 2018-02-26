@@ -1,0 +1,38 @@
+<div>
+    <a href='/'>Home</a>
+    <a href='/suppliers'>Suppliers</a>
+    <a href='/items'>Items</a> 
+    <a href='/search'>Search</a>    
+</div>
+    
+<div>
+    <h1>Add Item</h1>
+</div>
+
+<div>
+    <%if(err) {%>
+        <font color="red"><%=err.err%></font>
+    <%}%>
+</div>
+<div>
+    <form action="" method="post">
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>:</th>
+                <th><input type="text" name="name"></th>
+            </tr>
+            <tr>
+                <th>Brand</th>
+                <th>:</th>
+                <th><input type="text" name="brand"></th>
+            </tr>
+            <tr>
+                <th>Code Item</th>
+                <th>:</th>
+                <th><input type="text" name="codeitem"></th>
+            </tr>
+        </table>
+        <input type="submit" value="Submit">
+    </form>
+</div>

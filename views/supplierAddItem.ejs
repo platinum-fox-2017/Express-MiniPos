@@ -1,0 +1,57 @@
+<div>
+    <a href='/'>Home</a>
+    <a href='/suppliers'>Suppliers</a>
+    <a href='/items'>Items</a> 
+    <a href='/search'>Search</a>    
+</div>
+    
+<div>
+    <h1>Add Item for SUpplier</h1>
+</div>
+
+<div>
+    <table>
+        <tr>
+            <th><h4>Name</h4></th>
+            <th><h4><%=supplier.name%></h4></th>
+        </tr>
+        <tr>
+            <th><h4>City</h4></th>
+            <th><h4><%=supplier.city%></h4></th>
+        </tr>
+        <tr>
+            <th><h4>Addreses</h4></th>
+        </tr>
+        <tr>
+            <th><h2>List Item</h2></th>
+        </tr>
+        <%for(let i in supplier.Items){%>
+            <tr>
+                <th><h4><%=supplier.Items[i].brand%> <%=supplier.Items[i].name%></h4></th>
+                <th><h4>@ <%=supplier.SupplierItems[i].price%></h4></th>
+            </tr>
+        <%}%>
+    </table>
+</div>
+
+<div>
+    <form action="" method="post">
+        <table>
+            <tr>
+                <th><h4>List Item</h4></th>
+                <th><h4>Price</h4></th>
+            </tr>
+            <tr>
+                <th>
+                    <select name="ItemId">
+                        <%items.forEach(item => {%>
+                            <option value="<%=item.id%>"><%=item.brand%> <%=item.name%></option>
+                        <%})%>
+                    </select>
+                </th>
+                <th><input type="text" name="price"></input></th>
+            </tr>
+        </table>
+        <input type="submit" value="Submit">
+    </form>
+</div>

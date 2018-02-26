@@ -1,0 +1,32 @@
+<div>
+    <a href='/'>Home</a>
+    <a href='/suppliers'>Suppliers</a>
+    <a href='/items'>Items</a> 
+    <a href='/search'>Search</a>    
+</div>
+
+<div>
+    <h1>List Items</h1>
+    <button onclick="location.href ='/items/add';">Add Item</button>    
+</div>
+
+<div>
+    <table>
+        <tr>
+            <th><h3>Id</h3></th>
+            <th><h3>Name</h3></th>
+            <th><h3>Brand</h3></th>
+            <th><h3>Code Item</h3></th>
+            <th><h3>Action</h3></th>
+        </tr>
+        <%data.forEach(data => {%>
+            <tr>
+                <th><h4><%=data.id%></h4></th>
+                <th><h4><%=data.name%></h4></th>
+                <th><h4><%=data.brand%></h4></th>
+                <th><h4><%=data.codeitem%></h4></th>
+                <th><h4><button onclick="location.href ='/items/edit/<%=data.id%>'">Edit</button> || <a href="/items/delete/<%=data.id%>"><button onclick="return confirm(`Are you sure to delete <%=data.name%>`)">Delete</button></a></h4></th>
+            </tr>
+        <%})%>
+    </table>
+</div>
