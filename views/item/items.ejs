@@ -9,12 +9,14 @@
   <title>Items</title>
 </head>
 <body>
+	<div class = "container">
   <h1>List Items</h1>
     <center><a href="/items/add"><button type="button" class="btn btn-success">add Items</button></a></center> <br />
     <center>
     <table class = "table">
 			<thead>
-				<tr>
+				<tr class ="info">
+					<th>No</th>
 					<th>ID</th>
 					<th>Name</th>
 					<th>Brand</th>
@@ -23,8 +25,9 @@
 				</tr>
 			</thead>
 			<tbody>
-				<%data.forEach(item => {%>
+				<%data.forEach((item,i) => {%>
 				<tr>
+					<td><%=i+1%></td>
 					<td><%=item.id%></td>
 					<td><%=item.name%></td>
 					<td><%=item.brand%></td>
@@ -35,5 +38,6 @@
 			</tbody>
     </table>
 </center>
+</div>
 </body>
 </html>

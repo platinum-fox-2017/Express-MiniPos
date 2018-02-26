@@ -5,10 +5,11 @@ const router = express.Router()
 const models = require('../models')
 
 router.get('/',function(req,res){
-  models.Supplier.findAll().then(suppliers=>{
-    // res.send(suppliers)
+  models.Supplier.findAll({
+  include:[models.Item]}).then(suppliers=>{
+    res.send(suppliers)
     // console.log(JSON.parse(JSON.stringify(suppliers)))
-    res.render('supplier/suppliers',{data:suppliers})
+    // res.render('supplier/suppliers',{data:suppliers})
   }).catch(err=>{
     res.send(err)
   })

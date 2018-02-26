@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>Edit Item</title>
+  </head>
+  <body>
+	  <center>
+      <h1>Edit Items Data</h1>
+      <a href = "/items">show all data</a>
+      <form class= 'form-inline' action='/items/edit/<%=dataItem.id%>' method = 'post'>
+        <label>Name</label></br>
+        <input type ='text' value ='<%=dataItem.name%>' class="form-control"  name='name'> </br>
+        <label>Brand</label></br>
+        <input type ='text' value='<%=dataItem.brand%>' class="form-control"  name='brand'> </br>
+        <label>Code Item</label></br>
+        <input type ='text' value='<%=dataItem.codeitem%>' class="form-control"  name='codeitem'> </br>
+        </br>
+        <button type="submit" class="btn btn-success"> Update Data </button>    
+      </form>
+    </center>
+  </body>
+</html>

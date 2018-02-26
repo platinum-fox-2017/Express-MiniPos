@@ -9,21 +9,25 @@
   <title>Suppliers</title>
 </head>
 <body>
+	<div class = "container">
   <h1>List Suppliers</h1>
     <center><a href="/suppliers/add"><button type="button" class="btn btn-success">add Suppliers</button></a></center> <br />
     <center>
     <table class = "table">
 			<thead>
-				<tr>
+				<tr class = "danger">
+					<th>No</th>
 					<th>ID</th>
 					<th>Name</th>
 					<th>City</th>
+					<th>List Item</th>
 					<th>Action</th>
 				</tr>
 			</thead>
 			<tbody>
-				<%data.forEach(supplier => {%>
+				<%data.forEach((supplier,i) => {%>
 				<tr>
+					<td><%=i+1%></td>
 					<td><%=supplier.id%></td>
 					<td><%=supplier.name%></td>
 					<td><%=supplier.city%></td>
@@ -33,5 +37,6 @@
 			</tbody>
     </table>
 </center>
+</div>
 </body>
 </html>
