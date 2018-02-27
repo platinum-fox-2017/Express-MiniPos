@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<% include ../../partials/head %>
+</head>
+<body>
+	<% include ../../partials/header %>
+
+	<div class="container">
+		<% if(status == 1) { %>
+		<div class="alert alert-success">
+			<strong>Success!</strong> <%= message %>
+		</div>
+		<% } else if(status == 0) { %>
+		<div class="alert alert-danger">
+			<strong>Error!</strong> <%= message %>
+		</div>
+		<% } %>
+		<h3>Edit Item</h3>
+		<form class="form-horizontal" action="" method="post">
+			<div class="form-group">
+				<label class="col-sm-2 control-label">Name</label>
+	      		<div class="col-sm-5">
+	        		<input class="form-control" id="name" name="name" type="text" value="<%= data.name %>">
+	      		</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-2 control-label">Brand</label>
+	      		<div class="col-sm-5">
+	        		<input class="form-control" id="brand" name="brand" type="text" value="<%= data.brand %>">
+	      		</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-2 control-label">Code Item</label>
+	      		<div class="col-sm-5">
+	        		<input class="form-control" id="codeitem" name="codeitem" type="text" value="<%= data.codeitem %>">
+	      		</div>
+			</div>
+			<input type="submit" class="btn btn-primary" value="Edit Item" style="margin-left: 200px" />
+		</form>
+	</div>
+</body>
+</html>

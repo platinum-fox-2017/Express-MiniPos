@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <% include ../../partials/head %>
+</head>
+<body>
+  <% include ../../partials/header %>
+
+  <div class="container">
+    <% if(status == 1) { %>
+    <div class="alert alert-success">
+      <strong>Success!</strong> <%= message %>
+    </div>
+    <% } else if(status == 0) { %>
+    <div class="alert alert-danger">
+      <strong>Error!</strong> <%= message %>
+    </div>
+    <% } %>
+
+    <h3>List Supplier</h3>
+    
+    <table class="table">
+      <input type="button" onclick="location.href='/suppliers/add/';" class="btn btn-success pull-right" value="Add Supplier" />
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>Name</th>
+          <th>Kota</th>
+          <th>List Item</th>
+          <th>Add Item</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for (let i = 0; i < data.length; i++) { %>
+        <tr>
+          <td><%= i+1 %></td>
+          <td><%= data[i].name %></td>
+          <td><%= data[i].kota %></td>
+          <td>
+            <% if(data[i].SupplierItems.length > 0) { 
+              for (let j = 0; j < data[i].SupplierItems.length; j++) { %>
+                <ul>
+                  <li><%= data[i].SupplierItems[j].Item.name %> @ <%= data[i].SupplierItems[j].formatPrice() %></li>
+                </ul>
+            <% }} else { %>
+              No item yet
+            <% } %>
+          </td>
+          <td><a href="/suppliers/<%= data[i].id %>/additem"><i class="fa fa-plus-square-o" style="font-size:24px;color: grey"></i></a></td>
+          <td><a href="/suppliers/edit/<%= data[i].id %>"><i class="fa fa-edit" style="font-size:24px;color:blue"></i></a>&nbsp;&nbsp;<a href="/suppliers/delete/<%= data[i].id %>" onclick="return confirm('Delete This Supplier?')"><i class="fa fa-remove" style="font-size:24px;color:red"></i></a></td>
+          </tr>
+        <% } %>
+      </tbody>
+    </table>
+  </div>
+
+</body>
+</html>

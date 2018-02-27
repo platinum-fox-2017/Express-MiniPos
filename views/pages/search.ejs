@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<% include ../partials/head %>
+</head>
+<body>
+	<% include ../partials/header %>
+
+	<div class="container">
+		<h3>Search Page</h3>
+		<form class="col-sm-4" method="get">
+			<div class="form-group">
+				<label for="name">Name Item:</label>
+				<input type="text" class="form-control" id="name" placeholder="Enter name" name="name">
+			</div>
+			<div class="form-group col-sm-6">
+				<label for="min">Min:</label>
+				<input type="text" class="form-control" id="min" placeholder="Enter min. price" name="min" value="0">
+			</div>
+			<div class="form-group col-sm-6">
+				<label for="max">Max:</label>
+				<input type="text" class="form-control" id="max" placeholder="Enter max. price" name="max" value="0">
+			</div>
+			<button type="submit" class="btn btn-default">Submit</button>
+		</form>
+	</div>
+
+	<div class="container">
+		<h3>Search Result</h3>
+
+		<% if(data.length > 0) { %>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>No</th>
+		          	<th>Item Name</th>
+		          	<th>Supplier Name</th>
+			        <th>Price</th>
+        		</tr>
+        	</thead>
+        	<tbody>
+        		<% for (let i = 0; i < data.length; i++) { %>
+        		<tr>
+        			<td><%= i+1 %></td>
+        			<td><%= data[i].Item.brandName() %></td>
+        			<td><%= data[i].Supplier.name %></td>
+        			<td><%= data[i].formatPrice() %></td>
+        		</tr>
+        		<% } %>
+        	</tbody>
+        </table>
+        <% } else { %>
+        <p>No Item</p>
+        <% } %>
+	</div>
+</body>
+</html>
