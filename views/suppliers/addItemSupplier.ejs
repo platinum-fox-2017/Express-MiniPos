@@ -9,20 +9,18 @@
 
         <table border=1 cellspacing=0 cellpadding=10>
             <td>
-                <% for(let i=0; i<dataSupplier.length; i++) { %>
-                    <h4>Nama: <%= dataSupplier[i].name %></h4>
-                    <h4>City: <%= dataSupplier[i].kota %></h4>
-                    <h4>Address</h4>
-        
-                    <h3>List Item</h3>
-                    <% if(dataSupplier[i].Items.length == 0) { %>
-                        <h4>No Item yet</h4>
-                    <% } else { %>
-                    <h4><% for(let j=0; j<dataSupplier[i].Items.length; j++) { %>
-                        <li><%= dataSupplier[i].Items[j].brand%> <%= dataSupplier[i].Items[j].name%> @ $<%= dataSupplier[i].SupplierItems[j].price%> </li>
-                    <% } %></h4>
+                <h4>Nama: <%= dataSupplier.name %></h4>
+                <h4>City: <%= dataSupplier.kota %></h4>
+                <h4>Address</h4>
+
+                <h3>List Item</h3>
+                <% if(dataSupplier.Items.length == 0) { %>
+                    <h4>No Item yet</h4>
+                <% } else { %>
+                    <% for(let i=0; i<dataSupplier.Items.length; i++) { %>
+                        <li><%= dataSupplier.Items[i].name %> @ $<%= dataSupplier.Items[i].SupplierItem.price %> </li>
+                        <% } %>
                 <% } %>
-            <% } %>  
             </td>
         </table>
 
@@ -33,18 +31,13 @@
             <h4>List Item</h4>
             <select name="item">
                 <% for(let i=0; i<items.length; i++) { %>
-                    <% for(let j=0; j<dataSupplier[0].Items.length; j++) { %>
-                        <% if(items[i].name != dataSupplier[0].Items[j].name) { %>
-                            <option value="listItem"><%= items[i].brand%> <%= items[i].name%></option>
-                            <% j++ %>
-                            <% i++ %>
-                        <% } %>
-                    <% } %>
+                    <option value="<% dataSupplier.id %>" name="<% items[i].id %>"> <%= items[i].brand%> <%= items[i].name %> </option>
                 <% } %>
             </select>
 
             <h4>Price</h4>
             <input type="text" name="price"><br>
+            <input type="submit" name="Submit">
         </form>
         
         <%- include('../partials/footer')  %>
