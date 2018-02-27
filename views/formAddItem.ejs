@@ -1,0 +1,49 @@
+<!-- views/formTeacher.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ./head %>
+</head>
+<body class="container">
+
+<header>
+    <% include ./header %>
+</header>
+
+<main>
+    <div class="jumbotron">
+        <h2>Add Item for Supplier</h2>
+        <form name="form" method="POST" action="/suppliers/<%= suppliers.id %>/additem">
+            <table>
+                <tr>
+                <td>Supplier Name</td>
+                <td><input type="text" name="supplier_name" value="<%= suppliers.name%>" disabled></td>
+                </tr>
+                <tr>
+                <td>Item Name</td>
+                <td><select name="itemId">
+    
+                <% items.forEach((item) => { %>
+                    <option value=<%= item.id %>><%= item.name %></option>
+                <%})%>
+            </select></td>
+                </tr>
+                <tr>
+                <td>Price</td>
+                <td><input type="text" name="price" placeholder="eg: 10000000"></td>
+                </tr>
+                <tr>
+                <td colspan="2"><input type="submit" value="Add" ></td>
+                </tr>
+            </table>
+            </form>
+    </div>
+</main>
+
+<footer>
+    <% include ./footer %>
+</footer>
+
+</body>
+</html>

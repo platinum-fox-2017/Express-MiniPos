@@ -14,12 +14,13 @@
 <main>
     <div class="jumbotron">
         <h2>List Suppliers</h2>
-        <table border='1'>
+        <table border='1' style="width:30%">
             <tr>
               <td><b>No.</b></td>
               <td><b>Supplier Name</b></td>
               <td><b>Kota</b></td>
-              <td colspan=2><center><b>Action</b></center></td>
+              <td><b>List Product</b></td>
+              <td colspan=3><center><b>Action</b></center></td>
             </tr>
                 <% let no=1 %>
                 <% suppliers.forEach(dataSpl => { %>
@@ -27,6 +28,20 @@
               <td><%= no++ %></td>
               <td><%= dataSpl.name %></td>
               <td><%= dataSpl.kota %></td>
+              <% if(dataSpl.Items.length > 0) { %>
+                <td>
+                    <% dataSpl.Items.forEach(function(hasil){ %>
+                            <li><%= hasil.name %></li>
+                    <%  }) %>
+                </td>
+                
+              <% } else { %>
+                
+                    <td>Not Item Yet</td>
+                    
+                
+             <% } %>
+              <td><a href="/suppliers/<%= dataSpl.id %>/additem">Add Item</a></td>
               <td><a href="/suppliers/edit/<%= dataSpl.id %>">Edit</a></td>
               <td><a href="/suppliers/delete/<%= dataSpl.id %>" onclick="return confirm('delete this supplier ?');">Delete</a></td>
             </tr>

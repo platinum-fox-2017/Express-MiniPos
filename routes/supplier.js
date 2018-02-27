@@ -1,10 +1,15 @@
 const routes = require('express').Router()
 const model = require('../models')
+const Op = require('sequelize').Op
+
 
 
 routes.get('/', function(req, res){
     model.Supplier.findAll({
         order: [['id','ASC']],
+        include: [{
+            model: model.Item
+        }]
       })
       .then(suppliers => {
         //   res.send(suppliers)
@@ -63,6 +68,54 @@ routes.get('/delete/:id', function(req, res){
             id: req.params.id
         }
     }).then(data => {
+        res.redirect('/suppliers')
+    }).catch(err => {
+        res.send(err)
+    })
+})
+
+
+routes.get('/:id/additem',function(req, res){
+    model.Supplier.findOne({
+        where : { 
+          id : req.params.id
+        },
+        include:{
+            model: model.Item
+        }
+    }).then(suppliers => {
+        // res.send(suppliers)
+        var arr = []
+        suppliers.Items.forEach(supl => {
+            arr.push(supl.id)  
+        })
+        // res.send(arr)
+        model.Item.findAll({
+            where: {
+                id: {[Op.notIn]:arr}
+            }
+        })
+        .then(items => {
+            res.render('formAddItem', {suppliers : suppliers, items : items});
+            // res.send(items)
+        })
+    })
+    .catch(err => {
+        res.send(err);
+    });
+})
+
+routes.post('/:id/additem',function(req, res){
+    // let objSupl = {
+        
+    // }
+
+    model.SupplierItem.create({
+        SupplierId: req.params.id,
+        ItemId: req.body.itemId,
+        price: req.body.price
+        
+    }).then(suppliers => {
         res.redirect('/suppliers')
     }).catch(err => {
         res.send(err)
