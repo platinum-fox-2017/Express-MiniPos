@@ -1,0 +1,17 @@
+<nav>
+  <button type="button" onclick="location.href='/'">Home</button>
+  <button type="button" onclick="location.href='/items'">Items</button>
+  <button type="button" onclick="location.href='/suppliers'">Suppliers</button>
+</nav>
+<form action="/suppliers/edit/<%= supplier.id%>" method="post">
+  <h2>Edit Supplier</h2>
+  <fieldset>
+    <label for="name">Name</label>
+    <input name="name" type="text" placeholder="Name" value="<%= supplier.name%>">
+
+    <label for="kota">kota</label>
+    <input name="kota" type="text" placeholder="Kota" value="<%= supplier.kota%>">
+
+    <button type="submit">Edit Supplier</button>
+  </fieldset>
+</form>

@@ -1,0 +1,17 @@
+<nav>
+  <button type="button" onclick="location.href='/'">Home</button>
+  <button type="button" onclick="location.href='/items'">Items</button>
+  <button type="button" onclick="location.href='/suppliers'">Suppliers</button>
+</nav>
+<form action="/suppliers/add" method="post">
+  <h2>Add New Supplier</h2>
+  <fieldset>
+    <label for="name">Name</label>
+    <input name="name" type="text" placeholder="Name">
+
+    <label for="kota">Kota</label>
+    <input name="kota" type="text" placeholder="Kota">
+
+    <button type="submit">Add New Supplier</button>
+  </fieldset>
+</form>

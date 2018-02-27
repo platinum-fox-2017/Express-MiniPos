@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <title>
+      Mini Post of Sales
+    </title>
+  </head>
+  <body>
+    <nav>
+      <button type="button" onclick="location.href='/'">Home</button>
+      <button type="button" onclick="location.href='/items'">Items</button>
+      <button type="button" onclick="location.href='/suppliers'">Suppliers</button>
+    </nav>
+    <h2>List Suppliers</h2>
+    <button type="button" onclick="location.href='/suppliers/add'">Add New Supplier</button>
+    <table>
+      <thead>
+        <th>No</th>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Kota</th>
+        <th>Action</th>
+      </thead>
+      <tbody>
+        <%suppliers.forEach((supplier,i)=>{%>
+        <tr>
+          <td><%= i+1%></td>
+          <td><%= supplier.id%></td>
+          <td><%= supplier.name%></td>
+          <td><%= supplier.kota%></td>
+          <td>
+            <a href="/suppliers/edit/<%= supplier.id %>"></span>edit</a>
+            <a href="/suppliers/delete/<%= supplier.id %>"onclick="return confirm('Are you sure you want to delete:\n<%= supplier.name %>\n')"></span>delete</a>
+          </td>
+        </tr>
+        <%})%>
+      </tbody>
+    </table>
+  </body>
+</html>
