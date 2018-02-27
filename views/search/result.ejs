@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%include ../partials/header%>
+    <title>Search</title>
+  </head>
+  <body>
+    <div class ="container">
+	  <center>
+      <h1>Search Result</h1>
+      <table class = "table">
+      <thead>
+          <tr class ="info">
+            <th>ID</th>
+            <th>Item Name</th>
+            <th>Supplier Name</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+            <%list.forEach(data=>{%>
+          <tr>
+            
+              <td><%=data.ItemId%></td>
+              <td><%=data.Item.name%></td>
+              <td><%=data.Supplier.name%></td>
+              <td><%=data.price%></td>
+            
+          </tr>
+          <%})%>
+        </tbody>
+      </table>  
+    </center>
+  </div>
+  </body>
+</html>

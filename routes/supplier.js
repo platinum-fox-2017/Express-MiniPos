@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const router = express.Router()
-
+const Op = require('sequelize').Op
 const models = require('../models')
 const currency = require('../helpers/currency')
 
@@ -59,8 +59,19 @@ router.get('/delete/:id',function(req,res){
 router.get('/:id/additem',function(req,res){
   let id = req.params.id
   models.Supplier.findById(id,{include:[models.Item]}).then(supplier=>{
-    models.Item.findAll({include:[models.Supplier]}).then(items=>{
-      // res.send(supplier)
+    // console.log(JSON.parse(JSON.stringify(supplier)))
+    let data = JSON.parse(JSON.stringify(supplier.Items))
+    // console.log(data)
+    let arr =[]
+    for(let i=0;i<data.length;i++){
+      // console.log(data[i].id)
+      arr.push(data[i].id)
+    }
+    // console.log(arr)
+    models.Item.findAll({
+      where:{id:{[Op.notIn]:arr}}
+    }).then(items=>{
+      // res.send(items)
       // console.log(JSON.parse(JSON.stringify(items[0].Suppliers[0].SupplierItem.ItemId)))
       res.render('supplier/form_addItem',{dataSupplier:supplier,dataItem:items,uang:currency})
     }).catch(errIt=>{
