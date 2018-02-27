@@ -1,0 +1,9 @@
+{
+  "development": {
+    "username": "ozi",
+    "password": "password123",
+    "database": "Express MiniPos",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  }
+}

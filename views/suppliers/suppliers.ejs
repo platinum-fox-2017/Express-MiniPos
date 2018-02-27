@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>List Supplier</title>
+  </head>
+  <body>
+    <% include ../partials/navigation_bar %>
+      <h1>List Supplier</h1>
+      <h2><a href= "/suppliers/add">Add Supplier</a></h2>
+    <table border="1">
+        <tr>
+          <th>ID</th>
+          <th>Name</th> 
+          <th>Kota</th>
+          <th>List Item</th>
+          <th>Action</th>
+        </tr>
+        <% suppliers.sort((a,b) => a.id -b.id ).forEach((v,i) => { %>
+            <tr>
+              <td><%= v.id %></td>
+              <td><%= v.name %></td>
+              <td><%= v.kota %></td>
+              <% if(v.Items[0] === undefined){ %>
+                <td>No item yet</td>
+              <% } else{ %> 
+                  <td>
+                      <%v.Items.forEach((v2,i,a)=> {%>
+                    <li><%=`${v2.name} @ ${formatuang(v2.SupplierItems.price)}`%></li>
+                    <%})%>
+                  </td>
+             <% } %>
+              <td>
+                <a href= "/suppliers/edit/<%= v.id %>">Edit</a><br>
+                <a href= "/suppliers/delete/<%= v.id %>">Delete</a><br>
+                <a href= "/suppliers/<%= v.id %>/additem">Assign Item</a>
+              </td>
+            </tr>
+          <% }) %>
+      </table>
+  </body>
+</html>

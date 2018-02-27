@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Edit Supplier</title>
+  </head>
+    <h1>Edit Supplier</h1>
+    <h2><a href ="/suppliers/"></a></h2>
+  <body>
+        <form action="/suppliers/edit/<%= supplier.id %>" method= "post">
+            Name:<br>
+            <input type="text" name="name" placeholder="<%= supplier.name %>" >
+            <br>
+            Kota:<br>
+            <input type="text" name="kota" placeholder="<%= supplier.kota %>" >
+            <br><br>
+            <input type="submit" value="Edit Supplier">
+          </form>    
+  </body>
+</html>

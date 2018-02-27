@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Assign Item</title>
+  </head>
+    <h1>AssignItem</h1>
+    <h2><a href ="/suppliers/">return to supplier list</a></h2>
+  <body>
+        <table>
+                <tr>
+                  <th>Name</th> 
+                  <th>City</th>
+                  <th>Address</th>
+                  <th>List Item</th>
+                </tr>
+                    <tr>
+                      <td><%= supplier.name %></td>
+                      <td><%= supplier.kota %></td>
+                      <td>Address</td>
+                        <td>
+                            <% supplier.Items.forEach((v,i,a) => { %>
+                            <ol>
+                                <ul><%= `${v.brand} ${v.name} ${v.SupplierItems.price}` %></ul>
+                            </ol>
+                            <%})%>
+                        </td>
+                    </tr>
+              </table>
+
+        <form action="/suppliers/<%= supplier.id %>/additem" method= "post">
+            List Item:<br>
+            <select name="ItemId">
+                <% items_only.forEach((v,i,a) => {%>
+                    <option value="<%= v.id %>"><%= v.name %></option>
+                <%})%>
+            </select>
+            <br>
+            Price:<br>
+            <input type="text" name="price" placeholder="Price">
+            <br><br>
+            <input type="submit" value="Add Item">
+          </form>    
+  </body>
+</html>

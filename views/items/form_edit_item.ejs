@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Edit Item</title>
+  </head>
+    <h1>Edit Item</h1>
+    <h2>
+        <% if(err !== null){%>
+        <%= err %>
+        <%}%>
+    </h2>
+    <h2><a href ="/items/"></a></h2>
+  <body>
+        <form action="/items/edit/<%= item.id %>" method= "post">
+            Name:<br>
+            <input type="text" name="name" placeholder="<%= item.name %>" >
+            <br>
+            Brand:<br>
+            <input type="text" name="brand" placeholder="<%= item.brand %>" >
+            <br>
+            Item Code:<br>
+            <input type="text" name="codeitem" placeholder="<%= item.codeitem %>" >
+            <br><br>
+            <input type="submit" value="Edit Item">
+          </form>    
+  </body>
+</html>
