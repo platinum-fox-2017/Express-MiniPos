@@ -1,8 +1,10 @@
 'use strict';
 const models = require('../models');
+const Sequelize = require('sequelize');
+const Op = Sequelize.Op;
 
 module.exports = (function() {
-  const routes = require('express').Router();
+const routes = require('express').Router();
 
   routes.get('/',function(req,res){
     models.Supplier.findAll({
@@ -91,6 +93,38 @@ module.exports = (function() {
       }
     }).then(data=>{
       res.redirect('/suppliers')
+    })
+  })
+
+  routes.get('/search',function(req,res){
+    res.render('formSearch',{})
+  })
+
+  routes.get('/searchResult',function(req,res){
+    res.render('searchResult',{})
+  })
+
+  routes.post('/search',(req,res) => {
+    models.SupplierItem.findAll({ include:[{
+      model: models.Item,
+      where: {
+          name: {
+              [Op.iLike]: `%${req.body.name}%`
+          }
+        }
+      },{
+      model: models.Supplier,
+        }],
+          where: {
+              price: {
+                  [Op.between]: [req.body.minPrice, req.body.maxPrice]
+              }
+          }
+        }).then(data =>{
+            res.render('searchResult',{data:data})
+            // res.send(data)
+    }).catch(err=>{
+      res.send(err)
     })
   })
 

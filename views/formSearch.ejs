@@ -1,0 +1,23 @@
+<body>
+  <%- include menu.ejs %>
+    <h1>Search Item</h1>
+    <form name="formSearch" method="POST" action="/suppliers/search">
+    <table>
+        <tr>
+        <td>Name</td>
+        <td><input type="text" name="name" required></td>
+        </tr>
+        <tr>
+        <td>Min Price</td>
+        <td><input type="text" name="minPrice" required></td>
+        </tr>
+        <tr>
+        <td>Max Price</td>
+        <td><input type="text" name="maxPrice" required></td>
+        </tr>
+        <tr>
+        <td colspan="2"><input type="submit" value="Search" ></td>
+        </tr>
+    </table>
+    </form>
+</body>

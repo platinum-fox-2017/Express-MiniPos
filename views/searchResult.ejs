@@ -1,0 +1,24 @@
+<body>
+  <%- include menu.ejs%>
+    <h1>Search Result</h1>
+
+    <table border='1'>
+        <tr>
+          <td><center>Id.</center></td>
+          <td><center>Item Name</center></td>
+          <td><center>Supplier Name</center></td>
+          <td><center>Price</center></td>
+
+        </tr>
+        <% for(let i=0;i<data.length;i++){%>
+          <tr>
+            <td><%= i+1%></td>
+            <td><%= data[i].Item.name%></td>
+            <td><%= data[i].Supplier.name %></td>
+            <td><%= data[i].price%></td>
+          </tr>
+        <%}%>
+    </table>
+
+    <a href="/suppliers/search">Back</a>
+</body>
