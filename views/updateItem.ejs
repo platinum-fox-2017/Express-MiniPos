@@ -10,6 +10,7 @@
   <%}%>
   <body>
     <form class="" action="/items/update/<%=dataItems.id%>" method="post">
+      <input type="hidden" name="id" value="<%=dataItems.id%>">
       <input type="text" name="name" value="<%=dataItems.name%>">
       <input type="text" name="brand" value="<%=dataItems.brand%>">
       <input type="text" name="codeitem" value="<%=dataItems.codeitem%>">

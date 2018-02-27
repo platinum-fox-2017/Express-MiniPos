@@ -1,4 +1,5 @@
 'use strict';
+const Op = require('sequelize').Op
 module.exports = (sequelize, DataTypes) => {
   var Item = sequelize.define('Item', {
     name: DataTypes.STRING,
@@ -6,22 +7,28 @@ module.exports = (sequelize, DataTypes) => {
     codeitem: {
       type:DataTypes.STRING,
       validate:{
-        regCode:function(value){
-          let reg = /(HP|SW|LP)\d{4}/
-          if(value.search(reg) === -1){
-            throw new Error("Format Pengisian Item Code Anda Salah")
+        regCode:function(value,next){
+          console.log(value);
+          let reg = /(HP|SW|LP)\d{4}/.test(value)
+          if(reg === true){
+            next()
+          } else {
+            next("Format Pengisian Item Code Anda Salah")
           }
         },
         isUnique:function(value,next){
-          Item.findAll({
+          console.log('ini satu',this.dataValues);
+          Item.findOne({
             where:{
-              codeitem: value
+              codeitem: value,
+              id : {[Op.ne]:this.id}
             }
           }).then(item => {
-            if(item.length !== 0){
-              next(`ITEM CODE is already exists`)
-            }else{
+            console.log(this.dataValues);
+            if(item === null){
               next()
+            }else{
+              next(`ITEM CODE is already exists`)
             }
           }).catch(err => {
             next(err)
@@ -29,7 +36,7 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     }
-  }, {});
+  })
   Item.associate = function(models) {
     Item.hasMany(models.SupplierItem)
     Item.belongsToMany(models.Supplier,{through:"SupplierItem"})

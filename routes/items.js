@@ -46,6 +46,7 @@ router.get('/update/:id',(req,res)=>{
 
 router.post('/update/:id',(req,res)=>{
   let objUpdate = {
+    id:req.body.id,
     name:req.body.name,
     brand:req.body.brand,
     codeitem:req.body.codeitem
