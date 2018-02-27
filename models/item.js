@@ -19,7 +19,16 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     }
-  }, {});
+  }, {
+    hooks: {
+      afterBulkDestroy: (instance) => {
+        let ItemId = instance.where.id;
+        sequelize.models.SupplierItem.destroy({where: {ItemId: ItemId}})
+        .then(() => {})
+        .catch(err => console.log(err))
+      }
+    }
+  });
   Item.associate = function(models) {
     Item.belongsToMany(models.Supplier, {through: models.SupplierItem}),
     Item.hasMany(models.SupplierItem)

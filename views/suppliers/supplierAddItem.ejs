@@ -1,12 +1,7 @@
-<div>
-    <a href='/'>Home</a>
-    <a href='/suppliers'>Suppliers</a>
-    <a href='/items'>Items</a> 
-    <a href='/search'>Search</a>    
-</div>
+<%-include('../partials/menu.ejs')%>
     
 <div>
-    <h1>Add Item for SUpplier</h1>
+    <h1>Add Item for Supplier</h1>
 </div>
 
 <div>
@@ -25,12 +20,19 @@
         <tr>
             <th><h2>List Item</h2></th>
         </tr>
-        <%for(let i in supplier.Items){%>
-            <tr>
-                <th><h4><%=supplier.Items[i].brand%> <%=supplier.Items[i].name%></h4></th>
-                <th><h4>@ <%=supplier.SupplierItems[i].price%></h4></th>
-            </tr>
-        <%}%>
+        <tr>
+            <%if(supplier.SupplierItems.length>0) {%>
+                <%supplier.SupplierItems.forEach(items => {%>
+                    <tr>
+                        <th><%=items.Item.name%></th>
+                        <th>@</th>
+                        <th><%=items.formatUang()%></th>
+                    </tr>
+                <%})%>
+            <%} else {%>
+                <th>No item yet</th>
+            <%}%>
+        </tr>
     </table>
 </div>
 

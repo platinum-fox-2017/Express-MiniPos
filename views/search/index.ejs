@@ -1,0 +1,50 @@
+<%-include('../partials/menu.ejs')%>
+
+<div>
+    <h1>Search Page</h1>  
+</div>
+
+<div>
+    <form method="post">
+        <table>
+            <tr>
+                <th>Name Item</th>
+            </tr>
+            <tr>
+                <th>
+                    <input type="text" name="name">
+                </th>
+            </tr>
+            <tr>
+                <th>Min Price</th>
+                <th>Max Price</th>
+            </tr>
+            <tr>
+                <th><input type="text" name="minPrice"></th>
+                <th><input type="text" name="maxPrice"></th>
+            </tr>
+        </table>
+        <button type="submit">Search</button>
+    </form>
+</div>
+
+<div>
+    <table>
+        <%if(data.length>0) {%>
+            <tr>
+                <th>ID</th>
+                <th>Item Name</th>
+                <th>Supplier Name</th>
+                <th>Price</th>
+            </tr>
+            <%data.forEach(dataItem => {%>
+                <tr>
+                    <th><h4><%=dataItem.id%></h4></th>
+                    <th><h4><%=dataItem.Item.brand%> <%=dataItem.Item.name%></h4></th>
+                    <th><h4><%=dataItem.Supplier.name%></h4></th>
+                    <th><h4><%=dataItem.formatUang()%></h4></th>
+                </tr>
+            <%})%>
+        <%}%>
+    </table>
+</div>

@@ -1,0 +1,37 @@
+<%-include('../partials/menu.ejs')%>
+
+<div>
+    <h1>List Items</h1>
+    <button onclick="location.href ='/items/add';">Add Item</button>    
+</div>
+
+<div>
+    <table>
+        <tr>
+            <th><h3>Id</h3></th>
+            <th><h3>Name</h3></th>
+            <th><h3>Brand</h3></th>
+            <th><h3>Code Item</h3></th>
+            <th><h3>List Supplier</h3></th>
+            <th><h3>Action</h3></th>
+        </tr>
+        <%data.forEach(item => {%>
+            <tr>
+                <th><h4><%=item.id%></h4></th>
+                <th><h4><%=item.name%></h4></th>
+                <th><h4><%=item.brand%></h4></th>
+                <th><h4><%=item.codeitem%></h4></th>
+                <th>
+                    <%if(item.SupplierItems.length>0) {%>
+                        <%item.SupplierItems.forEach(suppliers => {%>
+                            <li><%=suppliers.Supplier.name%> @ <%=helpers.formatuang(suppliers.price)%></li>
+                        <%})%>
+                    <%} else {%>
+                        <h4>No Supplier Yet</h4>
+                    <%}%>                    
+                </th>
+                <th><h4><button onclick="location.href ='/items/edit/<%=item.id%>'">Edit</button> || <a href="/items/delete/<%=item.id%>"><button onclick="return confirm(`Are you sure to delete <%=item.name%>`)">Delete</button></a></h4></th>
+            </tr>
+        <%})%>
+    </table>
+</div>

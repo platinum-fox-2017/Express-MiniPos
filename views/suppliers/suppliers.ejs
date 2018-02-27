@@ -1,0 +1,37 @@
+<%-include('../partials/menu.ejs')%>
+
+<div>
+    <h1>Suppliers</h1>
+    <button onclick="location.href ='/suppliers/add';">Add Suppliers</button>    
+</div>
+
+<div>
+    <table>
+        <tr>
+            <th><h3>Id</h3></th>
+            <th><h3>Name</h3></th>
+            <th><h3>City</h3></th>
+            <th><h3>List Item</h3></th>
+            <th><h3>Add Item</h3></th>
+            <th><h3>Action</h3></th>
+        </tr>
+        <%data.forEach(supplier => {%>
+            <tr>
+                <th><h4><%=supplier.id%></h4></th>
+                <th><h4><%=supplier.name%></h4></th>
+                <th><h4><%=supplier.city%></h4></th>
+                <th>
+                    <%if(supplier.SupplierItems.length>0) {%>
+                        <%supplier.SupplierItems.forEach(items => {%>
+                            <li><%=items.Item.name%> @ <%=helpers.formatuang(items.price)%></li>
+                        <%})%>
+                    <%} else {%>
+                        <h4>No item yet</h4>
+                    <%}%>
+                </th>
+                <th><h4><button onclick="location.href ='/suppliers/<%=supplier.id%>/additem';">Assign Item</button>
+                <th><h4><button onclick="location.href ='/suppliers/edit/<%=supplier.id%>';">Edit</button> || <a href="/suppliers/delete/<%=supplier.id%>"><button onclick="return confirm('Are you sure to delete <%=supplier.name%>')">Delete</button></a></h4></th>
+            </tr>
+        <%})%>
+    </table>
+</div>

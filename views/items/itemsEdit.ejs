@@ -1,9 +1,4 @@
-<div>
-    <a href='/'>Home</a>
-    <a href='/suppliers'>Suppliers</a>
-    <a href='/items'>Items</a> 
-    <a href='/search'>Search</a>    
-</div>
+<%-include('../partials/menu.ejs')%>
     
 <div>
     <h1>Suppliers</h1>
@@ -18,9 +13,14 @@
                 <th><input type="text" name="name" value="<%=data.name%>"></th>
             </tr>
             <tr>
-                <th>City</th>
+                <th>Brand</th>
                 <th>:</th>
-                <th><input type="text" name="city" value="<%=data.city%>"></th>
+                <th><input type="text" name="brand" value="<%=data.brand%>"></th>
+            </tr>
+            <tr>
+                <th>Code Item</th>
+                <th>:</th>
+                <th><input type="text" name="codeitem" value="<%=data.codeitem%>"></th>
             </tr>
         </table>
         <input type="submit" value="Submit">

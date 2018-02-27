@@ -6,18 +6,18 @@ const model = require('../models')
 
 suppliers.get('/', (request, response) => {
     model.Supplier.findAll({
-        include: [
-            {model: model.SupplierItem},
-            {model: model.Item}
-        ],
+        include: [{
+            model: model.SupplierItem,
+            include: model.Item
+        }],
         order: [['id','ASC']]
     })
-    .then(suppliers => response.render('suppliers', {data:suppliers}))
+    .then(suppliers => response.render('suppliers/suppliers', {data:suppliers}))
     .catch(err => console.log(err));
 });
 
 suppliers.get('/add', (request, response) => {
-    response.render('suppliersAdd')
+    response.render('suppliers/suppliersAdd')
 });
 
 suppliers.post('/add', (request, response) => {
@@ -37,7 +37,7 @@ suppliers.get('/delete/:id', (request, response) => {
 
 suppliers.get('/edit/:id', (request, response) => {
     model.Supplier.findById(request.params.id)
-    .then(supplier => response.render('suppliersEdit', {data:supplier}))
+    .then(supplier => response.render('suppliers/suppliersEdit', {data:supplier}))
     .catch(err => console.log(err));
 });
 
@@ -53,20 +53,21 @@ suppliers.post('/edit/:id', (request, response) => {
 suppliers.get('/:id/additem', (request, response) => {
     let supplierData;
     model.Supplier.findAll({
-        include: [
-            {model: model.Item},
-            {model: model.SupplierItem}
-        ],
+        include: [{
+            model: model.SupplierItem,
+            include: model.Item
+        }],
         where: {id: request.params.id}
     })
     .then(supplier => {
         supplierData = supplier;
         return model.Item.findAll();
     })
-    .then(items => response.render('supplierAddItem', {supplier:supplierData[0], items:items}))
+    .then(items => response.render('suppliers/supplierAddItem', {supplier:supplierData[0], items:items}))
 });
 
 suppliers.post('/:id/additem', (request, response) => {
+    console.log(request.body.ItemId, request.params.id, request.body.price)
     model.SupplierItem.create({
         SupplierId: request.params.id,
         ItemId: request.body.ItemId,

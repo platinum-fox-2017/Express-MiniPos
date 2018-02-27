@@ -5,12 +5,18 @@ const items = express.Router();
 const model = require('../models');
 
 items.get('/', (request, response) => {
-    model.Item.findAll()
-    .then(items => response.render('items', {data:items}))
+    model.Item.findAll({
+        include: [{
+            model: model.SupplierItem,
+            include: model.Supplier
+        }],
+        order: [['id']]
+    })
+    .then(items => response.render('items/items', {data:items}))
 });
 
 items.get('/add', (request, response) => {
-    response.render('itemsAdd', {err: request.query});
+    response.render('items/itemsAdd', {err: request.query.err});
 });
 
 items.post('/add', (request, response) => {
@@ -21,11 +27,12 @@ items.post('/add', (request, response) => {
 
 items.get('/edit/:id', (request, response) => {
     model.Item.findById(request.params.id)
-    .then(item => response.render('itemsEdit', {data: item}))
+    .then(item => response.render('items/itemsEdit', {data: item}))
     .catch(err => console.log(err));
 });
 
 items.post('/edit/:id', (request, response) => {
+    console.log(request.body)
     model.Item.update(request.body, {where: {id: request.params.id}})
     .then(() => response.redirect('/items'))
     .catch(err => console.log(err));
