@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>SUPPLIERS</title>
   </head>
+  <%include ./partials/header%>
   <h2>SUPPLIERS</h2>
   <body>
     <form action="/suppliers/add" method="post">
@@ -26,11 +27,16 @@
           <td><%=data.name%></td>
           <td><%=data.kota%></td>
           <td>
-            <%data.Items.forEach(dataItem=>{%>
-              <ul>
-                <li><%=`${dataItem.name} Rp.${dataItem.SupplierItem.price}`%></li>
-              </ul>
-            <%})%>
+            <%if(data.Items.length === 0){%>
+              No Items Described Yet
+            <%}else{%>
+              <%data.Items.forEach(dataItem=>{%>
+                <ul>
+                  <li><%=`${dataItem.name}`%></li>
+                  <li><%=helper(dataItem.SupplierItem.price)%></li>
+                </ul>
+              <%})%>
+            <%}%>
           </td>
           <td> <a href="/suppliers/assign/<%=data.id%>"><button type="button" name="button"> ASSIGN ITEM </button></a></td>
           <td>

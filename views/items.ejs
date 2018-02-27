@@ -4,10 +4,11 @@
     <meta charset="utf-8">
     <title>ITEMS</title>
   </head>
+  <%include ./partials/header%>
   <h2>ITEMS</h2>
 
   <body>
-    <a href="/items/add">ADD ITEM</a>
+    <a href="/items/add"><button type="button" name="button">ADD ITEM</button></a>
     <table border = '1'>
       <thead>
         <td>ID</td>
@@ -21,8 +22,8 @@
           <td><%=data.name%></td>
           <td><%=data.brand%></td>
           <td><%=data.codeitem%></td>
-          <td> <a href="/items/update/<%=data.id%>">UPDATE ITEM</a></td>
-          <td> <a href="/items/delete/<%=data.id%>">DELETE ITEM</a> </td>
+          <td> <a href="/items/update/<%=data.id%>"> <button type="button">UPDATE ITEM</button> </a></td>
+          <td> <a href="/items/delete/<%=data.id%>"> <button type="button">DELETE ITEM</button> </a> </td>
         </tr>
       <%})%>
     </table>

@@ -10,7 +10,7 @@ router.get('/',(req,res)=>{
   })
   .then(dataSuppliers=>{
     // res.send(dataSuppliers)
-    res.render('suppliers.ejs',{dataSuppliers:dataSuppliers})
+    res.render('suppliers.ejs',{dataSuppliers:dataSuppliers,helper:require('../helpers/rupiah.js')})
   })
 })
 
