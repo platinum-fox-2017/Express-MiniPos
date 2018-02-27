@@ -1,0 +1,59 @@
+<html>
+    <head>
+        <title>
+            WEBSITE MINIPOS
+        </title>
+    </head>
+    <body>
+        <header>
+            <h3><%= title %></h3>
+        </header>
+
+        <form method="POST">
+            <table border="0">
+            <tr>
+                <td>Name</td>
+                <td>:</td>
+                <td><%= arrObjSuppliers[0].Name %></td>
+            </tr><br>
+            <tr>
+                <td>City</td>
+                <td>:</td>
+                <td><%= arrObjSuppliers[0].Kota %></td>
+            </tr>
+
+            <tr><td><b><br>List Items</b></td></tr>
+            <% for (let i = 0; i < arrObjSuppliers[0].Items.length; i++) { %>
+                <tr>
+                    <td><%= `${arrObjSuppliers[0].Items[i].Brand} ${arrObjSuppliers[0].Items[i].Name}`%></td>
+                    <td>@</td>
+                    <td><%= `Rp ${arrObjSuppliers[0].Items[i].SupplierItem.Price}` %></td>
+                </tr>
+            <% } %>
+            
+            </table>
+            <br><br>
+            <table>
+                <tr>
+                    <th>List Items</th>
+                    <th>Price</th>
+                </tr>
+                <tr>
+                <tr>
+                    <td>
+                    <select name="ItemId">
+                    <% for (let i = 0; i < arrResultId.length; i++) { %>
+                        <option value="<%=arrResultId[i]%>"><%= `${arrObjItems[arrResultId[i]-1].Brand} ${arrObjItems[arrResultId[i]-1].Name}`%></option>
+                    <% } %>
+                    </select>
+                    </td>
+                    <td>
+                        <input type="text" name="Price">
+                    </td>
+                </tr>
+            </table><br>
+            <input type="submit" value="Add Item">
+        </form>
+
+    </body>
+</html>

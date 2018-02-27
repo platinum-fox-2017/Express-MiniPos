@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <title>
+            WEBSITE MINIPOS
+        </title>
+    </head>
+    <body>
+        <header>
+            <h3><%= title %></h3>
+        </header>
+        <form method="POST">
+            <table border="1">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Kota</th>
+                    <th>List Item</th>
+                    <th>Add Item</th>
+                    <th>Action</th>
+                </tr>
+                <% for (let i = 0; i < arrSuppliers.length; i++) { %>
+                <tr>
+                    <td><%= arrSuppliers[i].id %></td>
+                    <td><%= arrSuppliers[i].Name %></td>
+                    <td><%= arrSuppliers[i].Kota %></td>
+                    <td><ul><% if (arrSuppliers[i].Items.length == 0) { %>
+                            <%=`No item yet`%>
+                            <% } else { %>
+                            <% for (let j = 0; j < arrSuppliers[i].Items.length; j++) { %>
+                            <li><%= `${arrSuppliers[i].Items[j].Name}`%> @ <%= helpers.formatuang(arrSuppliers[i].Items[j].SupplierItem.Price) %></li>
+                            <% } %>
+                            <% } %>
+                        </ul>
+                    </td>
+                    <td><a href="/suppliers/<%= arrSuppliers[i].id%>/additem">Add Item</a></td>
+                    <td><a href="/suppliers/edit/<%= arrSuppliers[i].id%>">Edit</a> | <a href="/suppliers/delete/<%= arrSuppliers[i].id%>">Delete</a></td>
+                </tr>
+                <% } %>
+
+
+            </table>
+            <br><br>
+
+            <button>
+                <a href="suppliers/add">
+                    Add New Supplier
+                </a>
+            </button>
+
+        </form>
+
+
+    </body>
+</html>

@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <title>
+            WEBSITE MINIPOS
+        </title>
+    </head>
+    <body>
+        <header>
+        </header>
+        <form method="POST">
+            <table border="1">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Brand</th>
+                    <th>Item Code</th>
+                    <th>Action</th>
+                </tr>
+                <% for (let i = 0; i < arrItems.length; i++) { %>
+                <tr>
+                    <td><%= arrItems[i].id %></td>
+                    <td><%= arrItems[i].Name %></td>
+                    <td><%= arrItems[i].Brand %></td>
+                    <td><%= arrItems[i].CodeItem %></td>
+                    <td><a href="/items/edit/<%=arrItems[i].id%>">Edit</a> || <a href="/items/delete/<%=arrItems[i].id%>">Delete</a></td>
+                </tr>
+                <% } %>
+
+
+            </table>
+            <br><br>
+
+            <button>
+                <a href="/items/add">
+                    Add New Items
+                </a>
+            </button>
+
+        </form>
+
+
+    </body>
+</html>
