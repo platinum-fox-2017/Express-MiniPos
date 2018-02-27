@@ -6,10 +6,8 @@ module.exports = (sequelize, DataTypes) => {
   },{
     hooks:{
       beforeCreate(){
-        console.log('Hi')
       },
       beforeDestroy(supplier,options){
-        console.log(supplier)
         sequelize.models.SupplierItem.findAll({
           where:{
             SupplierId: supplier.id
