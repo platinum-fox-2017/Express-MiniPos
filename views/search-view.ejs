@@ -1,0 +1,51 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="/style/css/bootstrap.min.css">
+    <script src="/style/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <h1 style="margin-left:35%;margin-top:2%">Search Item</h1>
+    <br>
+    <br>
+    <form action="" method="POST" style="margin-left:35%">
+        <div class="form-group">
+            <label for="supplier_name">Nama Item</label>
+            <input type="text" class="form-control" name="item_name" aria-describedby="emailHelp" placeholder="Enter supplier name" style="width:30%">
+        </div>
+
+        <div class="form-group">
+            <label for="supplier_brand">Min Price</label>
+            <input type="text" class="form-control" name="item_minprice" placeholder="Enter supplier town" style="width:30%">
+        </div>
+
+        <div class="form-group">
+                <label for="supplier_brand">Max Price</label>
+                <input type="text" class="form-control" name="item_maxprice" placeholder="Enter supplier town" style="width:30%">
+            </div>
+        <button type="submit" class="btn btn-primary">Cari</button>
+    </form>
+    <br>
+    <br>
+    <table class="table" style="margin-left:30%;width:30%;">
+        <tr>
+            <th>Item Name</th>
+            <th>Supplier Name</th>
+            <th>Price</th>
+        </tr>
+        
+        <% if (supplierItem.length > 0) {
+            supplierItem.forEach(item => { %>
+                <tr>
+                    <td><%=item.Item.name%></td>
+                    <td><%=item.Supplier.name%></td>
+                    <td><%=item.price%></td>
+                </tr>
+                <% }) %>
+        <% } %>
+
+    </table>
+</body>
+
+</html>

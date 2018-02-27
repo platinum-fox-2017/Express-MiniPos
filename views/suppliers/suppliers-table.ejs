@@ -1,0 +1,55 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="/style/css/bootstrap.min.css">
+    <script src="/style/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <a href="/suppliers" class ="btn btn-primary" style="margin-left:35%;margin-top:2%">Supplier</a>
+    <a href="/items" class ="btn btn-primary" style="margin-top:2%">Items</a>
+    <h1 style="margin-left:35%;margin-top:2%">Supplier List</h1>
+    <br>
+    <br>
+    <table class="table" style="width:30%;margin-left:35%">
+        <thead>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Brand</th>
+            <th>List Item</th>
+            <th>Add Items</th>
+            <th>Action</th>
+        </thead>
+        <tbody>
+            <% suppliers.forEach(function(supplier) { %>
+            <tr>
+                <td><%= supplier.id %></td>
+                <td><%= supplier.name %></td>
+                <td><%= supplier.kota %></td>
+                <%
+                if (supplier.Items.length > 0 ) { %>
+                <td>
+                <%  supplier.Items.forEach(function(item) { %>
+                            <li><%=item.name%></li>
+                    <% }) %>
+                </td>
+                <% } else { %>
+                <td>No items yet</td>    
+                <% } %>
+                <td>
+                    <a href = "suppliers/<%= supplier.id %>/additem">Assign Item</a>
+                </td>
+                <td>
+                    <a href = "suppliers/edit/<%= supplier.id %>">Edit</a> || 
+                    <a href = "suppliers/delete/<%= supplier.id %>">Delete</a>
+                </td>
+            </tr>
+            <%}) %>
+        </tbody>
+    </table>
+    <br>
+    <br>
+    <a href="/suppliers/add" class ="btn btn-primary" style="margin-left:35%">New Supplier</a>
+</body>
+
+</html>

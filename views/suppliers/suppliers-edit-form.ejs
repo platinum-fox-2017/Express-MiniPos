@@ -1,0 +1,25 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="/style/css/bootstrap.min.css">
+    <script src="/style/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <h1 style="margin-left:35%;margin-top:2%">Supplier Edit Form</h1>
+    <br>
+    <br>
+    <form action="" method="POST" style="margin-left:35%">
+        <div class="form-group">
+            <label for="supplier_name">Supplier Name</label>
+            <input type="text" class="form-control" name="supplier_name" value ="<%=supplier.name%>" placeholder="Enter supplier name" style="width:30%">
+        </div>
+        <div class="form-group">
+            <label for="supplier_brand">Kota</label>
+            <input type="text" class="form-control" name="supplier_kota" value ="<%=supplier.kota%>" placeholder="Enter supplier town" style="width:30%">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</body>
+
+</html>

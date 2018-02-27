@@ -1,0 +1,30 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="/style/css/bootstrap.min.css">
+    <script src="/style/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <h1 style="margin-left:35%;margin-top:2%">Items New Form</h1>
+    <h3 style="margin-left:25%;margin-top:2%"><%= err %></h3>
+    <br>
+    <br>
+    <form action="" method="POST" style="margin-left:35%">
+        <div class="form-group">
+            <label for="item_name">Item's Name</label>
+            <input type="text" class="form-control" name="item_name" placeholder="Enter item name" style="width:30%">
+        </div>
+        <div class="form-group">
+            <label for="item_brand">Item's Brand</label>
+            <input type="text" class="form-control" name="item_brand" placeholder="Enter item brand" style="width:30%">
+        </div>
+        <div class="form-group">
+                <label for="item_code">Item's Code</label>
+                <input type="text" class="form-control" name="item_code" placeholder="Enter item code" style="width:30%">
+            </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</body>
+
+</html>

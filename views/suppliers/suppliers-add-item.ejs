@@ -1,0 +1,43 @@
+<html>
+    <head>
+            <link rel="stylesheet" href="/style/css/bootstrap.min.css">
+            <script src="/style/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <h5>Supplier Name : <%= supplier.name %></h5>
+        <h5>Supplier Town : <%= supplier.kota %></h5>
+        <br>
+        <br>
+        <h5>Item List</h5>
+
+        <table class="table" style="width:10%">
+            <tr>
+                <th>Item Name</th>
+                <th>Price</th>
+            </tr>
+            <%  for(let i = 0; i < supplier.Items.length; i++) { %>
+                    <tr>
+                        <td><%=supplier.Items[i].name%></td>
+                        <td><%=helper.getPrice(supplier.SupplierItems[i].price)%></td>
+                    </tr>
+            <% } %>
+        </table>
+        <br>
+        <br>
+        <h5>Assign New Item</h5>
+        <form action="" method="POST">
+            <select name="assign_item">
+                <% items.forEach(function(item) { %>
+                    <option value = "<%=item.id%>" ><%= item.name %></option>
+                <% }) %>
+            </select>
+            <br>
+            <br>
+            <input type="text" name="price" placeholder="Masukkan harga">
+            <br>
+            <br>
+            <input type="submit" value="Assign this item !">
+        </form>
+
+    </body>
+</html>
