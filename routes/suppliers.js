@@ -1,9 +1,15 @@
 const routes = require('express').Router()
 const Models = require('../models')
+const Sequelize = require('sequelize')
+const Op = Sequelize.Op
 
 routes.get('/', (req, res)=>{
   // res.status(200).json({ message: 'Connected!'})
-  Models.Supplier.findAll()
+  Models.Supplier.findAll({
+    include: [{
+      model: Models.Item
+    }]
+  })
     .then(suppliers=>{
       // res.send(suppliers)
       res.render('suppliers.ejs', {suppliers: suppliers})
@@ -73,4 +79,51 @@ routes.get('/delete/:id', (req, res) => {
   })
 })
 
+routes.get('/:id/additem', (req, res) => {
+  // res.render('supp-additem.ejs')
+  Models.Supplier.findAll({
+    include: [{
+      model: Models.Item
+    }],
+    where: {
+      id: req.params.id
+    }
+  }).then(supplier => {
+      let arr = []
+      supplier[0].Items.forEach(item => {
+        arr.push(item.id)
+      });
+      Models.Item.findAll({
+        where: {
+          id: {[Op.notIn]: arr}
+        }
+      })
+      .then(items =>{
+        // res.send(items)
+        res.render('supp-additem.ejs', {supplier: supplier[0], items: items})
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }).catch(err => {
+    console.log(err)
+  })
+})
+
+routes.post('/:id/additem', (req, res) => {
+  // res.send(req.body)
+  // console.log(req.params.id)
+  let obj = {
+    SupplierId: req.params.id,
+    ItemId: req.body.ItemId,
+    price: req.body.price
+  }
+  // res.send(obj)
+  Models.SupplierItem.create(obj)
+  .then(() => {
+    res.redirect(`/suppliers/${obj.SupplierId}/additem`)
+  }).catch(err => {
+    console.log(err)
+  })
+})
 module.exports = routes;

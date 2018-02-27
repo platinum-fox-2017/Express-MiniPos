@@ -18,6 +18,8 @@
         <th>ID</th>
         <th>Name</th>
         <th>Kota</th>
+        <th>List Item</th>
+        <th>Add Item</th>
         <th>Action</th>
       </thead>
       <tbody>
@@ -27,6 +29,14 @@
           <td><%= supplier.id%></td>
           <td><%= supplier.name%></td>
           <td><%= supplier.kota%></td>
+          <td>
+            <% supplier.Items.forEach((item)=>{%>
+            <ul>
+              <li><%= item.getItemBrand()%> @ <%= helper.formatUang(item.SupplierItem.price)%></li>
+            </ul>
+            <%})%>
+          </td>
+          <td><a href="/suppliers/<%= supplier.id %>/additem">Assign Items</a></td>
           <td>
             <a href="/suppliers/edit/<%= supplier.id %>"></span>edit</a>
             <a href="/suppliers/delete/<%= supplier.id %>"onclick="return confirm('Are you sure you want to delete:\n<%= supplier.name %>\n')"></span>delete</a>

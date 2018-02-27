@@ -1,0 +1,39 @@
+<nav>
+  <button type="button" onclick="location.href='/'">Home</button>
+  <button type="button" onclick="location.href='/items'">Items</button>
+  <button type="button" onclick="location.href='/suppliers'">Suppliers</button>
+</nav>
+  <body>
+      <h2>Add Item for Supplier</h2>
+      <p>Name: <%= supplier.name%></p>
+      <p>City: <%= supplier.kota%></p>
+      <p>Address: </p>
+      <h3>List Item</h3>
+      <table>
+        <tbody>
+          <%supplier.Items.forEach((item) => {%>
+            <tr>
+              <td><%= item.getItemBrand()%></td>
+              <td><%= item.SupplierItem.price%></td>
+            </tr>
+          <%})%>
+        </tbody>
+      </table>
+      <br>
+      <br>
+      <form action="" method="post">
+        <fieldset>
+          <label for="listitem">List Item</label>
+          <select name="ItemId">
+            <% items.forEach((item) => {%>
+              <option value="<%= item.id%>"><%= item.getItemBrand()%></option>
+              <%})%>
+          </select>
+
+          <label for="price">Price</label>
+          <input name="price" type="text" placeholder="price" value="">
+
+          <button type="submit">Add Item</button>
+        </fieldset>
+      </form>
+  </body>

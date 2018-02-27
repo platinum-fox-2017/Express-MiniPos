@@ -5,16 +5,17 @@
 </nav>
 <body>
     <h2>Add New Item</h2>
+    <p><%= err.message %></p>
     <form action="/items/add" method="post">
       <fieldset>
         <label for="name">Name</label>
-        <input name="name" type="text" placeholder="Name">
+        <input name="name" type="text" placeholder="Name" value="<%= err.name%>">
     
         <label for="brand">Brand</label>
-        <input name="brand" type="text" placeholder="Brand">
+        <input name="brand" type="text" placeholder="Brand" value="<%= err.brand%>">
     
         <label for="codeitem">Code Item</label>
-        <input name="codeitem" type="text" placeholder="Code Item">
+        <input name="codeitem" type="text" placeholder="Code Item" value="<%= err.codeitem%>">
     
         <button type="submit">Add New Item</button>
       </fieldset>
