@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <title>DATA ITEMS</title>
+  </head>
+  <body>
+    <header>
+      <h2>DATA ITEMS</h2>
+    </header>
+    <table>
+      <tr>
+        <th>No</th>
+        <th>Name</th>
+        <th>Brand</th>
+        <th>Code Item</th>
+      </tr>
+      <% for(let i=0;i<items.length;i++){ %>
+        <tr>
+          <td><%= i+1 %></td>
+          <td><%= items[i].name %></td>
+          <td><%= items[i].brand %></td>
+          <td><%= items[i].codeItem %></td>
+          <td>
+            <a href="/items/edit/<%= items[i].id %>">Edit</a>
+            <a href="/items/delete/<%= items[i].id %>">Delete</a>
+          </td>
+        </tr>
+      <% } %>
+    </table>
+    <a href="/items/add">Add Items</a>
+  </body>
+</html>

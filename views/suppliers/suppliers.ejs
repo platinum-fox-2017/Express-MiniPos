@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <title>DATA SUPPLIERS</title>
+  </head>
+  <body>
+    <header>
+      <h2>DATA SUPPLIERS</h2>
+    </header>
+    <table>
+      <tr>
+        <th>No</th>
+        <th>Nama</th>
+        <th>Kota</th>
+      </tr>
+      <% for(let i=0;i<suppliers.length;i++){ %>
+        <tr>
+          <td><%= i+1 %></td>
+          <td><%= suppliers[i].name %></td>
+          <td><%= suppliers[i].kota %></td>
+          <td>
+            <a href="/suppliers/edit/<%= suppliers[i].id %>">Edit</a>
+            <a href="/suppliers/delete/<%= suppliers[i].id %>">Delete</a>
+          </td>
+        </tr>
+      <% } %>
+    </table>
+    <a href="/suppliers/add">Add Items</a>
+  </body>
+</html>
