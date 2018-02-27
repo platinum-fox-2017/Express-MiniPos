@@ -1,0 +1,42 @@
+<%- include('partials/header.ejs') %>
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <td>List Supplier</td>
+                        <td><a href ='/suppliers/add'><button>Add Supplier</button></a></td>
+                    </tr>
+                    <tr>
+                        <td>ID</td>
+                        <td>Name</td>
+                        <td>City</td>
+                        <td>List Item</td>
+                        <td>Add Item</td>
+                        <td>Action</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for (let i = 0; i < data.length; i++) { %>
+                        <tr>
+                            <td><%= data[i].id%></td>
+                            <td><%= data[i].Name%></td>
+                            <td><%= data[i].City%></td>
+                            <% if (data[i].Items.length === 0){ %>
+                                <td> No Item yet </td>
+                            <% } else { %>
+                                <td>
+                                <% for (let j = 0; j < data[i].Items.length; j++) { %>
+                                    <li><%= data[i].Items[j].Name %> @ <%= helper.formatuang(data[i].Items[j].SupplierItem.Price) %> </li>
+                                <% } %>
+                                </td>
+                            <% } %>
+                            <td><a href = '/suppliers/<%= data[i].id %>/additem'><button>Assign</button></a></td>
+                            <td><a href ='/suppliers/edit/<%= data[i].id %>'><button>Edit</button></a>
+                                <a href ='/suppliers/delete/<%= data[i].id %>'><button onclick='return confirm("Delete record?")'>Delete</button></td></a>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>

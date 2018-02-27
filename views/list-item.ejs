@@ -1,0 +1,44 @@
+<%- include('partials/header.ejs') %>
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <td>List Item</td>
+                        <td><a href = '/items/add'><button>Add Item</button></a></td>
+                    </tr>
+                    <tr>
+                        <td>ID</td>
+                        <td>Name</td>
+                        <td>Brand</td>
+                        <td>Code Item</td>
+                        <td>List Supplier</td>
+                        <td>Action</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for (let i = 0; i < data.length; i++) { %>
+                        <tr>
+                            <td><%= data[i].id%></td>
+                            <td><%= data[i].Name%></td>
+                            <td><%= data[i].Brand%></td>
+                            <td><%= data[i].CodeItem%></td>
+                            <% if (data[i].Suppliers.length === 0){ %>
+                                <td>No Supplier yet</td>
+                            <% } else { %>
+                                <td>
+                               <% for (let j = 0; j < data[i].Suppliers.length; j++){ %>
+                                    <li><%= data[i].Suppliers[j].Name %> </li>
+                               <% } %>
+                                </td>
+                            <% } %>
+                            <td> </td>
+                            <td>
+                                <a href ='/items/edit/<%= data[i].id %>'><button>Edit</button></a>
+                                <a href ='/items/delete/<%= data[i].id %>'><button onclick="return confirm('Delete record?')">Delete</button></td></a>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>

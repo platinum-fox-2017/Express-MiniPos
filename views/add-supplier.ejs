@@ -1,0 +1,25 @@
+<%- include('partials/header.ejs') %>
+        <div>
+            <h3> Add Supplier</h3>
+            <form method="POST">
+
+                <table>
+                    <thead>
+                        <tr>
+                            <td>Name</td>
+                            <td>City</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="text" name="Name" value=""></td>
+                            <td><input type="text" name="City" value=""></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <input type="submit" value="Submit">
+                <button><a href='/items'>Cancel</a></button>
+            </form>
+        </div>
+    </body>
+</html>

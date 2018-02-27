@@ -1,0 +1,53 @@
+<%- include('partials/header.ejs') %>
+        <div>
+            <h3> Add Item for Supplier</h3>
+            <form method="POST">
+
+                <table>
+                    <thead>
+                        <tr>
+                            <td>Name</td>
+                            <td><%= supplier.Name %></td>
+                        </tr>
+                        <tr>
+                            <td>City</td>
+                            <td><%= supplier.City %></td>
+                        </tr>
+                        <tr>
+                            <td>Address</td>
+                            <td></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Available Items</td>
+                        </tr>
+                        <% for (let i = 0; i < supplier.Items.length; i++){ %>
+                            <tr>
+                               <td><%= supplier.Items[i].Name %></td>
+                               <td><%= '@ ' + helper.formatuang(supplier.Items[i].SupplierItem.Price) %></td>
+                            </tr>
+                          <% } %> 
+                        <tr>
+                            <td>List Items</td>
+                            
+                            <td>Price</td>
+                        </tr>
+                        <tr>
+                           <td> 
+                               <select name="ItemId">
+                                <% for (let i = 0; i < phone.length; i++) { %>
+                                    <option value="<%=phone[i].id%>"><%= phone[i].Name %></option>
+                                <% } %>
+                                </select>
+                            </td>
+                            <td><input type="text" name="Price" value="" placeholder="12000000"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <input type="submit" value="Submit">
+                <button><a href='/suppliers'>Cancel</a></button>
+            </form>
+        </div>
+    </body>
+</html>

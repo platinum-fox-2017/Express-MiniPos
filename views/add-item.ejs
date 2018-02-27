@@ -1,0 +1,28 @@
+    <%- include('partials/header.ejs') %>
+        <div>
+            <h3> Add Item</h3>
+            <%= err.err %>
+            <form method="POST">
+
+                <table>
+                    <thead>
+                        <tr>
+                            <td>Name</td>
+                            <td>Brand</td>
+                            <td>Code Item</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="text" name="Name" value=""></td>
+                            <td><input type="text" name="Brand" value=""></td>
+                            <td><input type="text" name="CodeItem" value=""></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <input type="submit" value="Submit">
+                <button><a href='/items'>Cancel</a></button>
+            </form>
+        </div>
+    </body>
+</html>
