@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <%- include ../partials/navbar.ejs%>
+    
+    <a href="/suplier/add"> <button type="button" name="button">tambah suplier</button> </a>
+    <br>
+    <br>
+    <table border='1'>
+      <tr>
+        <th>nama</th>
+        <th>kota</th>
+        <th>list item</th>
+        <th>add item</th>
+        <th colspan='2'>action</th>
+      </tr>
+      <% for(let i=0;i<data.length;i++){ %>
+      <tr>
+        <td><%= data[i].name %></td>
+        <td><%= data[i].kota %></td>
+        <% if(data[i].items.length===0){%>
+        <td>not yet items</td>
+        <%}else{%>
+        <td>
+          <ul>
+            <% for(let j=0;j<data[i].items.length;j++){%>
+              <li><%= data[i].items[j].name %> @ <%= helper.formatuang(data[i].items[j].supppplieritem.price) %></li>
+            <%}%>
+
+          </ul>
+
+        </td>
+        <%}%>
+        <td> <a href="/suplier/asignitem/<%= data[i].id%>">assign items</a> </td>
+        <td> <a href="/suplier/update/<%= data[i].id %> ">edit</a> </td>
+        <td> <a href="/suplier/delete/<%= data[i].id %> ">delete</a> </td>
+      </tr>
+      <% } %>
+    </table>
+  </body>
+</html>

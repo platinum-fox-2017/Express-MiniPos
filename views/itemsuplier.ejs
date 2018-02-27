@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+      <table>
+        <tr>
+          <td>nama</td>
+          <td><%= data[0].name%></td>
+        </tr>
+        <tr>
+          <td>city</td>
+          <td><%=data[0].kota%></td>
+        </tr>
+        <tr>
+          <td><h1>list item</h1></td>
+        </tr>
+        <% for(let i=0;i<data[0].items.length;i++){%>
+        <tr>
+          <td><%= data[0].items[i].name%></td>
+          <td></td>
+          <td><%= data[0].items[i].supppplieritem.price%></td>
+        </tr>
+        <%}%>
+      </table>
+
+      <form class="" action="/suplier/asignitem/<%= data[0].id%>" method="post">
+        <table>
+          <tr>
+            <th>list item</th>
+            <th></th>
+            <th>price</th>
+          </tr>
+          <tr>
+            <td>
+              <select name="item">
+                <%for(let i=0;i<item.length;i++){%>
+                <option value="<%= item[i].id%>"><%= item[i].name%></option>
+                <%}%>
+              </select>
+            </td>
+            <td></td>
+            <td> <input type="text" name="harga" value="" placeholder="masukan harga item"> </td>
+          </tr>
+          <tr>
+            <td> <input type="submit" name="" value="submit"> </td>
+          </tr>
+        </table>
+      </form>
+
+
+  </body>
+</html>

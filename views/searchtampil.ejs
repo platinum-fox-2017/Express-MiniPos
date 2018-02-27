@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <%- include ../partials/navbar.ejs%>
+
+        <h1>search result</h1>
+        <table>
+          <tr>
+            <th>full name</th>
+            <th>supplier name</th>
+            <th>price</th>
+          </tr>
+          <% for(let i=0;i<data.length;i++){%>
+          <tr>
+            <td><%= data[i].item.brand%></td>
+            <td><%= data[i].supplier.name %></td>
+            <td><%= data[i].price%></td>
+          </tr>
+          <%}%>
+        </table>
+  </body>
+</html>

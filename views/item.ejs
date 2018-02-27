@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <%- include ../partials/navbar.ejs%>
+
+    <a href="/item/add"> <button type="button" name="button">tambah suplier</button> </a>
+    <br>
+    <br>
+    <table border='1'>
+      <tr>
+        <th>nama</th>
+        <th>brand</th>
+        <th>kode item</th>
+        <th>list suplier</th>
+        <th colspan='2'>action</th>
+      </tr>
+      <% for(let i=0;i<data.length;i++){ %>
+      <tr>
+        <td><%= data[i].name %></td>
+        <td><%= data[i].brand %></td>
+        <td><%= data[i].codeitem %></td>
+        <% if(data[i].suppliers.length===0){%>
+        <td>not yet supplier</td>
+        <%}else{%>
+        <td>
+          <ul>
+            <% for(let j=0;j<data[i].suppliers.length;j++){%>
+              <li><%= data[i].suppliers[j].name %> @ <%= helper.formatuang(data[i].suppliers[j].supppplieritem.price) %></li>
+            <%}%>
+
+          </ul>
+
+        </td>
+        <%}%>
+        <td> <a href="/item/update/<%= data[i].id %> ">edit</a> </td>
+        <td> <a href="/item/delete/<%= data[i].id %> ">delete</a> </td>
+      </tr>
+      <% } %>
+    </table>
+  </body>
+</html>
