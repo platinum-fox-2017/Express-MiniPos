@@ -7,8 +7,12 @@ module.exports = (sequelize, DataTypes) => {
   Supplier.associate = models=>{
     Supplier.belongsToMany(models.Item,{
       through:'SupplierItem',
-      foreignKey: 'ItemId'      
+      foreignKey: 'SupplierId'      
+    })
+    Supplier.hasMany(models.SupplierItem,{
+      foreignKey:'SupplierId'
     })
   }
+  
   return Supplier;
 };

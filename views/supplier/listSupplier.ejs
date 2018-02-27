@@ -1,5 +1,5 @@
 <%include ../index%>
-<div class="container">
+<div class="container"> 
     <a href="/suppliers/add">
         <button class="btn btn-primary">Add Supplier</button>
     </a>
@@ -23,7 +23,7 @@
                         <td>
                             <ul>
                                 <%data.Items.forEach(item=>{%>
-                                    <li><%=item.name%></li>
+                                    <li><%=item.name%> &nbsp;&nbsp;@<%=item.SupplierItem.format_Uang()%></li>
                                 <%})%>
                             </ul>
                         </td>

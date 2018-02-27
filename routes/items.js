@@ -45,7 +45,7 @@ router.post('/edit/:id',(req,res)=>{
     }).then(()=>{
         res.redirect('/items')
     }).catch(err=>{
-        res.send(err)
+        res.render('./item/itemForm',{action:'edit', item:'',  error:err.errors[0].message})        
     })
 })
 router.get('/delete/:id',(req,res)=>{

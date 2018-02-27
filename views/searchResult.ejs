@@ -1,0 +1,27 @@
+<%include ./search%>
+<div class="container">
+    <%if (item.length === 0){%>
+        <center>
+                hasil pencarian tidak ditemukan
+        </center>
+    <%}else{%>
+        <table class="table table strip" >
+                <thead>
+                    <th>ID</th>
+                    <th>Item Name</th>
+                    <th>Supplier Name</th>
+                    <th>Price</th>
+                </thead>
+                <tbody>
+                        <%item.forEach(data=>{%>
+                    <tr>
+                            <td><%=data.id%></td>
+                            <td><%=data.Item.name%></td>
+                            <td><%=data.Supplier.name%></td>
+                            <td><%=data.price%></td>
+                    </tr>
+                    <%})%>
+                </tbody>
+        </table>
+    <%}%>
+    </div>

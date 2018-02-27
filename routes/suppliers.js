@@ -6,6 +6,7 @@ router.get('/',(req, res)=> {
     Model.Supplier.findAll({
         include:[Model.Item]
     }).then(data=>{
+        // res.send(data)
         res.render('./supplier/listSupplier',{supplier:data})
     }).catch(err=>{
         res.send(err)
@@ -62,9 +63,21 @@ router.get('/:id/addItem',(req,res)=>{
     Model.Supplier.findById(req.params.id,{
         include:[Model.Item]
     }).then(data=>{
+        // res.send(data)
         Model.Item.findAll().then(dataItem=>{
             res.render('./supplier/addItem', {supplier:data, item:dataItem})
         })
+    }).catch(err=>{
+        res.send(err)
+    })
+})
+router.post('/:id/addItem',(req,res)=>{
+    Model.SupplierItem.create({
+        SupplierId : req.params.id,
+        ItemId:req.body.ItemId,
+        price:req.body.price,
+    }).then(()=>{
+        res.redirect('/suppliers')
     }).catch(err=>{
         res.send(err)
     })
