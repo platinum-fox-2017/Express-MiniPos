@@ -6,13 +6,13 @@ class ItemCRUD {
 
   static itemPage(req,res){
     db.Item.findAll({
-      // include: [
-      //   {
-      //     model: db.Item
-      //   }
-      // ]
+      include: [
+        {
+          model: db.Supplier
+        }
+      ]
     }).then(foundItems => {
-      // res.send('item page')
+      // res.send(foundItems)
       res.render('./item/item.ejs', {
         title:'Item Page',
         header:'Items',
@@ -22,11 +22,6 @@ class ItemCRUD {
     })
   }
 
-  // <!-- <ol>
-  // <% for (let j = 0; j < foundItems[i].Items.length; j++) { %>
-  //   <li><%= foundItems[i].Items[j].nam %></li>
-  // <% } %>
-  // </ol> -->
 
   static itemAddPage(req,res){
 

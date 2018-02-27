@@ -24,24 +24,26 @@
         <input type="submit" value="Search">
       </form>
       <br>
-      <p>SEARCH RESULT:</p>
-      <table>
-        <tr>
-            <th>Item ID</th>
-            <th>Item Name</th>
-            <th>Supplier Name</th>
-            <th>Price</th>
-        </tr>
-        <!-- loop -->
-        <% for (let i = 0; i < foundSupplierItems.length; i++) { %>
+      <% if(searched) { %>
+        <p>SEARCH RESULT:</p>
+        <table>
           <tr>
-            <td><%= foundSupplierItems[i].Item.id %></td>
-            <td><%= foundSupplierItems[i].Item.name %></td>
-            <td><%= foundSupplierItems[i].Supplier.name %></td>
-            <td><%= foundSupplierItems[i].price %></td>
+              <th>Item ID</th>
+              <th>Item Name</th>
+              <th>Supplier Name</th>
+              <th>Price</th>
           </tr>
-        <% } %>
-      </table>
+          <!-- loop -->
+          <% for (let i = 0; i < foundSupplierItems.length; i++) { %>
+            <tr>
+              <td><%= foundSupplierItems[i].Item.id %></td>
+              <td><%= foundSupplierItems[i].Item.name %></td>
+              <td><%= foundSupplierItems[i].Supplier.name %></td>
+              <td><%= foundSupplierItems[i].price %></td>
+            </tr>
+          <% } %>
+        </table>
+      <% } %>
     </div>
   </div>
 

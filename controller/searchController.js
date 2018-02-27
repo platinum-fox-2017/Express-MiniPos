@@ -14,6 +14,7 @@ class SearchController {
       title:'Search',
       header:'Search Page',
       foundSupplierItems: [],
+      searched: false,
       err: null
     })
   }
@@ -42,6 +43,7 @@ class SearchController {
         title:'Search',
         header:'Search Page',
         foundSupplierItems:foundSupplierItems,
+        searched: true,
         err: null
       })
     })

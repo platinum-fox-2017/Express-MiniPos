@@ -8,9 +8,14 @@ module.exports = (sequelize, DataTypes) => {
     hooks:{
       afterDestroy: (instance, options) => {
         // instance.id
-        db.SupplierItem.destroy({
+        // console.log('==============================');
+        // console.log(instance);
+        // console.log(instance.dataValues.id);
+        // console.log(instance.dataValues);
+        // console.log('==============================');
+        sequelize.models.SupplierItem.destroy({
           where:{
-            SupplierId: instance.id
+            SupplierId: instance.dataValues.id
           }
         })
       }

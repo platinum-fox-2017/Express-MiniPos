@@ -32,7 +32,11 @@
             <td><%= foundItems[i].brand %></td>
             <td><%= foundItems[i].codeitem %></td>
             <td>
-              list supplier
+              <ul>
+              <% for (let j = 0; j < foundItems[i].Suppliers.length; j++) { %>
+                <li><%= foundItems[i].Suppliers[j].name %></li>
+              <% } %>
+              </ul>
             </td>
             <!-- edit/delete -->
             <td>

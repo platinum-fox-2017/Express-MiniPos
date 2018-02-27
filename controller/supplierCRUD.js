@@ -179,7 +179,8 @@ class SupplierCRUD {
       {
         where: {
           id:req.params.id
-        }
+        },
+        individualHooks: true
       }
     ).then(()=>{
       res.redirect('/suppliers')
