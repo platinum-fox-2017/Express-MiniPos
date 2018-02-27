@@ -50,7 +50,7 @@ router.post('/edit/:id',(req,res)=>{
 
 router.get('/delete/:id',(req,res)=>{
     let id = req.params.id
-    item.destroy({where:{id:id}}).then(data=>{
+    item.destroy({where:{id:id},individualHooks:true}).then(data=>{
         res.redirect('/item')
     })
 })

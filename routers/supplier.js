@@ -1,5 +1,6 @@
 const express = require('express')
 const router = express.Router()
+const op = require('sequelize').Op
 const {supplier,item,supplierItem} = require('../models')
 
 
@@ -48,7 +49,7 @@ router.post('/edit/:id',(req,res)=>{
 
 router.get('/delete/:id',(req,res)=>{
     let id = req.params.id
-    supplier.destroy({where:{id:id}}).then(data=>{
+    supplier.destroy({where:{id:id},individualHooks:true}).then(data=>{
         res.redirect('/supplier')
     })
 })
@@ -56,7 +57,15 @@ router.get('/delete/:id',(req,res)=>{
 router.get('/:id/additem',(req,res)=>{
     let id = req.params.id
     supplier.findById(id,{include:item}).then(data=>{
-        item.findAll().then(data2=>{
+        let tmp = []
+        for(let i = 0 ; i < data.items.length ; i++){
+            tmp.push(data.items[i].id)
+        }
+        item.findAll({
+            where: {
+                id:{[op.notIn]:tmp}
+            }
+        }).then(data2=>{
             res.render('additem_supplier',{supplier:data,item:data2,helper:require('../helper/help')})
         }).catch(err=>{
             res.send(err)

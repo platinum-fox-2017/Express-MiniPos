@@ -32,23 +32,22 @@ module.exports = (sequelize, DataTypes) => {
   }
 },{
   hooks:{
-    afterCreate:(item,option)=>{
-      sequelize.models.SupplierItem({where:{
-        ItemId: item.id
+    afterDestroy:(item,option)=>{
+      console.log(item)
+      sequelize.models.supplierItem.findAll({where:{
+        itemId: item.id
       }}).then(hasil =>{
+        console.log(hasil)
         const Destroy = hasil.map(each =>{
           return new Promise ((resolve,reject)=>{
-            sequelize.models.SupplierItem.destroy({where:{
-              ItemId : each.ItemId
+            sequelize.models.supplierItem.destroy({where:{
+              itemId : each.itemId
             }}).then(result =>{
               resolve(result)
             })
           })
         })
-
-        Promise.all(Destroy).then(kelar =>{
-          
-        })
+        Promise.all(Destroy).then()
       })
     }
   }
