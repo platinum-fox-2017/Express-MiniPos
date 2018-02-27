@@ -1,0 +1,18 @@
+<html>
+<body>
+<h1>Add Item Data</h1>
+<form class="" action="/items/add" method="post">
+  <%if (err !== '') {%>
+    <h3>
+      <font color="red">
+        <%= err.message %>
+      </font>
+    </h3>
+  <%}%>
+  <input type="text" placeholder="Name" name="name">
+  <input type="text" placeholder="Brand" name="brand">
+  <input type="text" placeholder="Code Item" name="codeitem">
+  <button>SUBMIT</button>
+</form>
+</body>
+</html>
