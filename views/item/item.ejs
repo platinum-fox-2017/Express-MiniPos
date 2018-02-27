@@ -1,0 +1,46 @@
+<!doctype html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Mini Point of Sales</title>
+
+  <link rel="stylesheet" href="/css/style.css"></head>
+ <body>
+     <%- include('../partials/menu.ejs') %>
+     <h1>List of Items</h1>
+     <h3><a href="/items/add">Add Item<a></h3>
+         <table>
+             <tr>
+                 <th>No</th>
+                 <th>ID</th>
+                 <th>Name</th>
+                 <th>Brand</th>
+                 <th>Code Item</th>
+                 <th>List Supplier</th>
+                 <th>Action</th>
+             </tr>
+             <% for(let i = 0; i < items.length; i++){%>
+                 <tr>
+                     <td><%=i+1%></td>
+                     <td><%=items[i].id%></td>
+                     <td><%=items[i].name%></td>
+                     <td><%=items[i].brand%></td>
+                     <td><%=items[i].codeitem%></td>
+                     <td>
+                         <ul>
+                             <% if(items[i].Suppliers.length ==0){ %>
+                                 No Supplier Yet
+                            <% } else { %>
+                                 <% for(let j = 0; j < items[i].Suppliers.length; j++){%>
+                                     <li><%=helper.printItem(items[i].Suppliers[j].name,items[i].Suppliers[j].SupplierItem.price)%></li>
+                                 <% } %>
+                            <% } %>
+                         </ul>
+                     </td>
+                     
+                     <td><a href="/items/edit/<%=items[i].id%>">Edit</a> <a href="/items/delete/<%=items[i].id%>">Delete</a></td>
+                 </tr>
+            <% } %>
+        </table>
+
+ </body>

@@ -1,0 +1,19 @@
+<!doctype html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Mini Point of Sales</title>
+
+  <link rel="stylesheet" href="/css/style.css"></head>
+ <body>
+     <%- include('../partials/menu.ejs') %>
+     <h1>Add Supplier</h1>
+     <form action='/suppliers/edit/<%=supplier.id%>' method='post'>
+         Name: <br>
+         <input type='text' name='name' value ='<%=supplier.name%>'> <br>
+         Kota: <br>
+         <input type='text' name='kota' value = '<%=supplier.kota%>'><br>
+         <input type='submit' value='Save Edit'>
+     </form>
+
+ </body>

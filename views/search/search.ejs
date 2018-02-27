@@ -1,0 +1,50 @@
+<!doctype html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Mini Point of Sales</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+ <body>
+     <%- include('../partials/menu.ejs') %>
+     <h1>Search Page</h1>
+     <table>
+         <form action="/search" method='post'>
+        <tr>
+            <th>Name Item</th>
+        </tr>
+        <tr>
+            <td><input type='text' name='ItemName'></td>
+        </tr>
+        <tr>
+            <th>Min Price</th>
+            <th>Max Price</th>
+        </tr>
+        <tr>
+            <td><input type='text' name='MinPrice'></td>
+            <td><input type='text' name='MaxPrice'></td>
+        </tr>
+        <tr>
+            <td><input type='submit' value='Search'></td>
+        </tr>
+        </form>
+     </table>
+    <% if (supplieritem.length !=0) {%>
+     <h1>Search Result</h1>
+     <table>
+        <tr>
+            <th>ID</th>
+            <th>Item Name</th>
+            <th>Supplier Name</th>
+            <th>Price</th>
+        </tr>
+        <%for(let i = 0; i < supplieritem.length; i++){%>
+            <tr>
+                <td></td>
+                <td><%=supplieritem[i].Item.brand%> <%=supplieritem[i].Item.name%></td>
+                <td><%=supplieritem[i].Supplier.name%></td>
+                <td><%=supplieritem[i].price%></td>
+            </tr>
+        <% } %>
+     </table>
+    <% } %>
