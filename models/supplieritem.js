@@ -21,6 +21,7 @@ module.exports = (sequelize, DataTypes) => {
     // SupplierItem -- > Item
     SupplierItem.belongsTo(models.Item,{
       foreignKey: 'ItemId',
+      onDelete : 'CASCADE',
       hooks: true
     })
   }

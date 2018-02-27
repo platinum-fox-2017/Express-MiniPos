@@ -48,7 +48,8 @@ Router.post('/edit/:id',(req,res)=>{
 Router.get('/delete/:id',(req,res)=>{
     let idSupplier = Number(req.params.id)
     Supplier.destroy({
-        where:{id: idSupplier}
+        where:{id: idSupplier},
+        individualHooks : true
     }).then(result=>{
         res.redirect('/supplier')
     })
@@ -86,5 +87,7 @@ Router.post('/addItem/:id',(req,res)=>{
 Router.get('/addItem/:id/back',(req,res)=>{
     res.redirect('/supplier')
 })
+
+
 
 module.exports = Router

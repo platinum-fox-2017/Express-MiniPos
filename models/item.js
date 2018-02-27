@@ -78,7 +78,6 @@ module.exports = (sequelize, DataTypes) => {
   Item.associate = function (models){
     Item.hasMany(models.SupplierItem,{
       foreignKey: 'ItemId',
-      onDelete : 'CASCADE',
       hooks: true
     })
 
