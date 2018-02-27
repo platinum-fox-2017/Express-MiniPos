@@ -11,7 +11,7 @@
 <body>
 	<div class = "container">
   <h1>List Items</h1>
-    <center><a href="/items/add"><button type="button" class="btn btn-success">add Items</button></a></center> <br />
+    <left><a href="/items/add"><button type="button" class="btn btn-success">add Items</button></a></left> <br />
     <center>
     <table class = "table">
 			<thead>
@@ -20,6 +20,7 @@
 					<th>ID</th>
 					<th>Name</th>
 					<th>Brand</th>
+					<th>List Supplier</th>
 					<th>Code Item</th>
 					<th>Action</th>
 				</tr>
@@ -30,6 +31,7 @@
 					<td><%=i+1%></td>
 					<td><%=item.id%></td>
 					<td><%=item.name%></td>
+					<td><%=item.brand%></td>
 					<td><%=item.brand%></td>
 					<td><%=item.codeitem%></td>
 					<td><a href = "/items/edit/<%=item.id%>"><button type="button" class="btn btn-info">Edit</button></a>  <a href = "/items/delete/<%=item.id%>" onclick="return confirm('Delete item ?')"><button type="button" class="btn btn-danger">Delete</button></a> </td>

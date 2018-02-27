@@ -15,13 +15,12 @@ module.exports = (sequelize, DataTypes) => {
         },
         isUnique:((value,next)=>{
           Item.findAll({where:{
-            codeitem:value,
-            id:{[Op.ne]: this.id}}})
+            codeitem:value}})
             .then(data=>{
             if(data.length !== 0){
-              next()
+              next('Code item harus unik')
             }else{
-              next('Code item harus unik'); 
+              next(); 
             }
           }).catch(err=>{
             next(err)
@@ -32,6 +31,7 @@ module.exports = (sequelize, DataTypes) => {
   });
   Item.associate = function(models){
     Item.belongsToMany(models.Supplier,{through :models.SupplierItem,foreignKey: 'ItemId'})
+    Item.hasMany(models.SupplierItem,{foreignKey: 'ItemId'})
   };
   return Item;
 };
