@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>List Item</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+    <table class="table">
+      <h1>Items Data</h1>
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>Name</th>
+          <th>Brand</th>
+          <th>Code Item</th>
+          <th>Actions</th>
+          <th>Options</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%items.forEach((item, i) =>{%>
+          <tr>
+            <td><%=i+1%></td>
+            <td><%=item.name%></td>
+            <td><%=item.brand%></td>
+            <td><%=item.codeitem%></td>
+            <td>
+              <a href="/items/<%=item.id%>/edit" class="btn btn-info">Edit</a>
+              <a href="/items/<%=item.id%>/delete" class="btn btn-danger" action="/items" onclick="return confirm('Delete this item?')" >Delete</a>
+            </td>
+          </tr>
+        <%})%>
+      </tbody>
+      <a href="/items/add" class="btn btn-success btn-xs">
+        <h4>Add Item</h4>
+      </a>
+    </table>
+  </div>
+  </body>
+</html>

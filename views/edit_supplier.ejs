@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Edit Supplier</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title></title>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Edit Supplier</h2></br>
+        <form class="form-group" action="/suppliers/<%=suppliers.id%>/edit" method="post">
+          <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" name="name" placeholder="Enter name" class="form-control" value="<%=suppliers.name%>">
+          </div>
+          <div class="form-group">
+            <label for="city">City:</label>
+            <input type="text" name="city" placeholder="Enter city" class="form-control" value="<%=suppliers.city%>">
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+          <a href="/suppliers" class="btn btn-danger">Cancel</a>
+        </form>
+    </div>
+  </body>
+</html>

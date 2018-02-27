@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>List Supplier</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+    <table class="table">
+      <h1>Add Item To Supplier</h1>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>City</th>
+          <th>List Item</th>
+          <th>Add Item</th>
+          <th>Price</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%=data[0].Supplier.name%></td>
+          <td><%=data[0].Supplier.city%></td>
+          <td>
+            <%data.forEach(list => {%>
+              <li><%=list.Item.name%></li>
+              <%})%>
+          </td>
+          <td>
+            <form class="form-group" action="/suppliers/<%=data[0].Supplier.id%>/assignitem" method="post">
+              <select name="subjectId">
+                  <%items.forEach(item => {%>
+                    <option value="<%=item.name%>"><%=item.name%></option>
+                  <%})%>
+              </select>
+              <input type="text" name="" value="">
+            </form>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  </body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Edit Item</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title></title>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Edit Item</h2></br>
+        <form class="form-group" action="/items/<%=items.id%>/edit" method="post">
+          <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" name="name" placeholder="Enter name" class="form-control" value="<%=items.name%>">
+          </div>
+          <div class="form-group">
+            <label for="brand">Brand:</label>
+            <input type="text" name="brand" placeholder="Enter brand" class="form-control" value="<%=items.brand%>">
+          </div>
+          <div class="form-group">
+            <label for="codeitem">Code Item:</label>
+            <input type="text" name="code item" placeholder="Enter code item" class="form-control" value="<%=items.brand%>">
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+          <a href="/items" class="btn btn-danger">Cancel</a>
+        </form>
+    </div>
+  </body>
+</html>

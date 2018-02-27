@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>List Supplier</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+    <table class="table">
+      <h1>Suppliers Data</h1>
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>Name</th>
+          <th>City</th>
+          <th>List Item</th>
+          <th>Add Item</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%suppliers.forEach((supplier, i) =>{%>
+          <tr>
+            <td><%=i+1%></td>
+            <td><%=supplier.name%></td>
+            <td><%=supplier.city%></td>
+            <%if(supplier.Items.length>0){%>
+              <td>
+                <%supplier.Items.forEach((item,i) => {%>
+                  <li><%=item.name%></li>
+                  <%})%>
+              </td>
+            <%} else {%>
+              <td>No item yet</td>
+            <%}%>
+            <td>
+              <a href="/suppliers/<%=supplier.id%>/assignitem" class="btn btn-primary">Assign Item</a>
+            </td>
+            <td>
+              <a href="/suppliers/<%=supplier.id%>/edit" class="btn btn-info">Edit</a>
+              <a href="/suppliers/<%=supplier.id%>/delete" class="btn btn-danger" action="/suppliers" onclick="return confirm('Delete this supplier?')" >Delete</a>
+            </td>
+          </tr>
+        <%})%>
+      </tbody>
+      <a href="/suppliers/add" class="btn btn-success btn-xs">
+        <h4>Add Supplier</h4>
+      </a>
+    </table>
+  </div>
+  </body>
+</html>
