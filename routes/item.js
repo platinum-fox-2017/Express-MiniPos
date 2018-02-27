@@ -16,7 +16,12 @@ routes.get('/', function(req, res){
 
 //Add
 routes.get('/add', function(req, res){
-    res.render('formItem',{})
+    let error = ""
+    if(req.query.error != ""){
+        error = req.query.error
+    }
+    
+    res.render('formItem',{error: error})
 })
   
 routes.post('/add', function(req, res){
@@ -28,7 +33,8 @@ model.Item.create({
     .then(items => {
         res.redirect('/items')
     }).catch(err => {
-        res.send(err)
+        // res.send(err)
+        res.redirect(`/items/add?error=${err.message}`)
     });
 })
 

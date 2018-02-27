@@ -8,3 +8,6 @@ npm install --save sequelize pg sequelize-cli express ejs
 
 ./node_modules/.bin/sequelize seed:generate --name add-item
 ./node_modules/.bin/sequelize db:seed --seed 20180227045057-add-item.js
+
+./node_modules/.bin/sequelize model:generate --name SupplierItem --attributes SupplierId:integer,ItemId:integer,price:integer
+
