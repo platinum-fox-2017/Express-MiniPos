@@ -1,0 +1,10 @@
+npm init
+npm install --save sequelize pg sequelize-cli express ejs
+
+./node_modules/.bin/sequelize db:create
+./node_modules/.bin/sequelize model:generate --name Item --attributes name:string,brand:string,codeItem:string
+./node_modules/.bin/sequelize model:generate --name Supplier --attributes name:string,kota:string
+./node_modules/.bin/sequelize db:migrate
+
+./node_modules/.bin/sequelize seed:generate --name add-item
+./node_modules/.bin/sequelize db:seed --seed 20180227045057-add-item.js

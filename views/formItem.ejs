@@ -1,0 +1,43 @@
+<!-- views/formSupplier.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ./head %>
+</head>
+<body class="container">
+
+<header>
+    <% include ./header %>
+</header>
+
+<main>
+    <div class="jumbotron">
+        <h2>Add New Item</h2>
+        <form name="form" method="POST" action="/items/add">
+            <table>
+                <tr>
+                <td>Product Name</td>
+                <td><input type="text" name="name" ></td>
+                </tr>
+                <tr>
+                <td>Brand Product</td>
+                <td><input type="text" name="brand" ></td>
+                </tr>
+                <td>Code Item</td>
+                <td><input type="text" name="code_item" ></td>
+                </tr>
+                <tr>
+                <td colspan="2"><input type="submit" value="ADD" ></td>
+                </tr>
+            </table>
+            </form>
+    </div>
+</main>
+
+<footer>
+    <% include ./footer %>
+</footer>
+
+</body>
+</html>

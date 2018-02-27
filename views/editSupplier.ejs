@@ -1,0 +1,43 @@
+<!-- views/formSupplier.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ./head %>
+</head>
+<body class="container">
+
+<header>
+    <% include ./header %>
+</header>
+
+<main>
+    <div class="jumbotron">
+        <h2>Edit Data Supplier</h2>
+        <form name="form" method="POST" action="/suppliers/edit/<%= suppliers.id %>">
+            <table>
+                <tr>
+                <td>Supplier Name</td>
+                <td><input type="text" name="supl_name" value="<%= suppliers.name %>"></td>
+                </tr>
+                <tr>
+                <td>Kota</td>
+                <td><input type="text" name="kota" value="<%= suppliers.kota %>"></td>
+                </tr>
+                <tr>
+                <td colspan="2"><input type="submit" value="SAVE" ></td>
+                </tr>
+                
+            </table>
+            </form>
+    </div>
+</main>
+        <tr>    
+            <td><a href="/suppliers">Back</a></td>
+        </tr>
+<footer>
+    <% include ./footer %>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!-- views/listSupplier.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ./head %>
+</head>
+<body class="container">
+
+<header>
+    <% include ./header %>
+</header>
+
+<main>
+    <div class="jumbotron">
+        <h2>List Suppliers</h2>
+        <table border='1'>
+            <tr>
+              <td><b>No.</b></td>
+              <td><b>Supplier Name</b></td>
+              <td><b>Kota</b></td>
+              <td colspan=2><center><b>Action</b></center></td>
+            </tr>
+                <% let no=1 %>
+                <% suppliers.forEach(dataSpl => { %>
+            <tr>
+              <td><%= no++ %></td>
+              <td><%= dataSpl.name %></td>
+              <td><%= dataSpl.kota %></td>
+              <td><a href="/suppliers/edit/<%= dataSpl.id %>">Edit</a></td>
+              <td><a href="/suppliers/delete/<%= dataSpl.id %>" onclick="return confirm('delete this supplier ?');">Delete</a></td>
+            </tr>
+          <% }) %>
+    </table>
+    </div>
+    <table>
+        <tr>
+            <td>
+                <form action="/suppliers/add">
+                    <input type="submit" value="Add Supplier" id="bold" />
+                </form>
+            </td>
+            <td>
+                <form action="/home">
+                    <input type="submit" value="Back" />
+                </form>
+            </td>
+        </tr>
+    </table>
+    
+    
+   
+</main>
+
+<footer>
+    <% include ./footer %>
+</footer>
+
+</body>
+</html>

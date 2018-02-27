@@ -1,0 +1,47 @@
+<!-- views/formSupplier.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ./head %>
+</head>
+<body class="container">
+
+<header>
+    <% include ./header %>
+</header>
+
+<main>
+    <div class="jumbotron">
+        <h2>Edit Data Item</h2>
+        <form name="form" method="POST" action="/items/edit/<%= items.id %>">
+            <table>
+                <tr>
+                <td>Product Name</td>
+                <td><input type="text" name="name" value="<%= items.name %>"></td>
+                </tr>
+                <tr>
+                <td>Brand Product</td>
+                <td><input type="text" name="brand" value="<%= items.brand %>"></td>
+                </tr>
+                <tr>
+                <td>Code Item</td>
+                <td><input type="text" name="code_item" value="<%= items.codeItem %>"></td>
+                </tr>
+                <tr>
+                <td colspan="2"><input type="submit" value="SAVE" ></td>
+                </tr>
+                
+            </table>
+            </form>
+    </div>
+</main>
+        <tr>    
+            <td><a href="/items">Back</a></td>
+        </tr>
+<footer>
+    <% include ./footer %>
+</footer>
+
+</body>
+</html>
