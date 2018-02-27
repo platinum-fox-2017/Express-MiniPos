@@ -11,12 +11,16 @@
         <th>No</th>
         <th>Nama</th>
         <th>Kota</th>
+        <th>List Item</th>
       </tr>
-      <% for(let i=0;i<suppliers.length;i++){ %>
+      <% for(let i in suppliers){ %>
         <tr>
           <td><%= i+1 %></td>
           <td><%= suppliers[i].name %></td>
           <td><%= suppliers[i].kota %></td>
+          <% if(suppliers[i].ItemId==null){ %>
+            <td>No item yet</td>
+          <% } %>
           <td>
             <a href="/suppliers/edit/<%= suppliers[i].id %>">Edit</a>
             <a href="/suppliers/delete/<%= suppliers[i].id %>">Delete</a>

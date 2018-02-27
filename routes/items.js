@@ -17,11 +17,11 @@ routes.get('/',function(req,res){
 routes.get('/add',function(req,res){
   let errorMessage;
   if(req.query===null){
-    errorMessage = null;
+    errorMessage = null
   } else {
-    errorMessage = req.query.err;
+    errorMessage = req.query.err
   }
-  res.render('items/add.ejs',{err: errorMessage});
+  res.render('items/add.ejs',{err:errorMessage});
 })
 
 routes.post('/add',function(req,res){
@@ -46,7 +46,13 @@ routes.get('/edit/:id',function(req,res){
       merek: dataItems.brand,
       kode: dataItems.codeItem
     }
-    res.render('items/edit.ejs',obj)
+    let errorMessage;
+    if(req.query===null){
+      errorMessage = null
+    } else {
+      errorMessage = req.query.err
+    }
+    res.render('items/edit.ejs',{data:obj,err:errorMessage});
   })
 })
 
@@ -59,6 +65,8 @@ routes.post('/edit/:id',function(req,res){
   },{where:{id:req.body.id}
   }).then(function(){
     res.redirect('/items');
+  }).catch(function(){
+    res.redirect(`/items/edit/${req.params.id}?err=${err.message}`);
   })
 })
 

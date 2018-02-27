@@ -9,15 +9,23 @@ module.exports = (sequelize, DataTypes) => {
         is: {
           args: /(HP|SW|LP)\d{4}/,
           msg: 'Code Item harus diawali dengan HP | SW | LP dan diikuti’ dengan 4 digit angka'
+        },
+        isUnique(value, callback){
+          sequelize.models.Item.findAll({})
+            .then((dataItems)=> {
+              for(let i in dataItems){
+                if(value == dataItems[i].codeItem){
+                  callback('Code Item harus Unik')
+                }
+              }
+              callback('')
+            })
         }
       }
     }
-  }, {
-    isUnique(value) {
-      models.findAll({}).then()
-    }});
+  }, {});
   Item.associate = function(models) {
-    // associations can be defined here
+    Item.belongsToMany(models.Supplier,{through:models.SupplierItem});
   };
   return Item;
 };

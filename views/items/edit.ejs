@@ -4,11 +4,12 @@
   </head>
   <body>
     <h2>EDIT DATA ITEM</h2>
+    <p><%= err %></p>
     <form action="" method="post">
-      <input type="hidden" value="<%= id %>" name="id">
-      <input type="text" value="<%= nama %>" name="newName" placeholder="Name"><br>
-      <input type="text" value="<%= merek %>" name="newMerek" placeholder="Brand"><br>
-      <input type="text" value="<%= kode %>" name="newKode" placeholder="Item Code"><br>
+      <input type="hidden" value="<%= data.id %>" name="id">
+      <input type="text" value="<%= data.nama %>" name="newName" placeholder="Name"><br>
+      <input type="text" value="<%= data.merek %>" name="newMerek" placeholder="Brand"><br>
+      <input type="text" value="<%= data.kode %>" name="newKode" placeholder="Item Code"><br>
       <input type="submit">
     </form>
   </body>
