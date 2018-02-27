@@ -10,6 +10,9 @@
     <h1></h1>
     <form action="/item/add" method="post">
         <input type="text" name="name" placeholder="Name">
+        <% if(err && err.brand){%>
+            <span><%=err.brand%></span>
+        <%}%>
         <input type="text" name="brand" placeholder="Brand">
         <% if(err && err.codeItem){%>
             <span><%=err.codeItem%></span>

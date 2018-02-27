@@ -31,6 +31,7 @@ Router.post('/add',(req,res)=>{
         res.redirect('/item')
 
     }).catch((err)=>{
+        console.log(err)
         const error = err.errors.reduce((hasil,value)=>{
             hasil[value.path] = value.message
             return hasil
@@ -87,21 +88,7 @@ Router.get('/delete/:id',(req,res)=>{
         where:{id: idItem},
         individualHooks : true
     }).then((result)=>{
-        SupplierItem.findAll({where:{
-            ItemId:idItem
-        }}).then(dataConjunction=>{
-            console.log(dataConjunction.length)
-            console.log(dataConjunction)
-            const destroy = dataConjunction.map(each=>{
-                return new Promise((resolve,reject)=>{
-                    SupplierItem.destroy({where:{ItemId:each.ItemId}}).then(resolve(each))
-                })
-            })
-            
-            Promise.all(destroy).then(done=>{
-                res.redirect('/item')
-            })
-        })
+        res.redirect('/item')
     })
 })
 
