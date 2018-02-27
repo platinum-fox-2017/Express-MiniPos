@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <%include ./partial/head %>    
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Search</title>
+</head>
+<body>
+    <center>
+        <h1>Search Page</h1>
+        <form action="/search" method="post">
+            <label for="">Name Item</label>
+            <input type="text" placeholder="name item" name = "search">
+            <label for="">Min Price</label>
+            <input type="text" placeholder="Min Price" name = "minPrice">
+            <label for="">Max Price</label>
+            <input type="text" placeholder="Max Price" name = "maxPrice">
+            <button type="submit">Submit</button>
+        </form>
+        <table>
+            <tr>
+                <th>No</th>
+                <th>Item Name</th>
+                <th>Supplier Name</th>
+                <th>Price</th>
+            </tr>
+            <%data.forEach((data,index)=>{%>
+            <tr>
+                <td> <%= index+1 %>  </td>
+                <td> <%= data.item.name    %></td>
+                <td> <%= data.supplier.name %></td>
+                <td> <%= helper(data.price) %></td>
+            </tr>
+            <%})%>
+        </table>
+    </center>
+</body>
+</html>

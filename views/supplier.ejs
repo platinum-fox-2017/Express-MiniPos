@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html >
+<% include ./partial/head %>
+<head>
+    <title>Supplier</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+    <center>
+    <h1>List Supplier</h1>
+    <h3><a href ="/supplier/add"> Add Supplier </a></h3>
+    <table class = 'table'>
+        <tr>
+            <th>No</th>
+            <th>Name</th>
+            <th>City</th>
+            <th>List Item</th>
+            <th>Add Item </th>
+            <th>Option</th>
+        </tr>
+       <%data.forEach((supplier,index)=>{%>
+        <tr>
+            <td><%= index+1       %></td>
+            <td><%= supplier.name %></td>
+            <td><%= supplier.city %></td>
+            <%if(supplier.items.length !== 0){%>
+                <td> 
+                <%supplier.items.forEach(item=>{%>
+                        <li><%= item.name %> @<%=helper(item.supplierItem.price)%> </li>  
+                <%})%>
+                </td>
+            <%}else{%>
+                 <td> Not Item Yet </td>
+            <%}%>
+            <td><a href = "/supplier/<%=supplier.id%>/additem"> Assign Item</a></td>
+            <td>
+                <a href = "/supplier/edit/<%=supplier.id%>"> Edit </a> ||
+                <a href = "/supplier/delete/<%=supplier.id%>" onclick = "return confirm('are you sure want to delete this data?')"> Delete</a>
+            </td>
+        </tr>
+        <%})%>
+    </table>
+    </center>
+</body>
+</html>

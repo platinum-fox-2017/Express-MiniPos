@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <title>Supplier</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+    <center>
+    <h2> Add Supplier Data </h2>
+    <form class = "" action="/supplier/edit/<%=data.id%>" method = "post">
+        <p>Company Name</p>
+        <input type = "text" placeholder = "company name" name = "name" value = "<%=data.name%>" >
+        </br>
+        </br>
+        <p>City</p>  
+        <input type = "text" placeholder = "city" name = "city" value = "<%=data.city%>" >
+        </br>
+        </br>
+        <button> Submit Data </button>  
+    </form>
+    <center>
+</body>
+</html>

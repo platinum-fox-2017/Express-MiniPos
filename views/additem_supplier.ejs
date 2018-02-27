@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<head>
+    <title>Add Item for Supplier</title>
+</head>
+<body>
+    <center>
+        <h1> Add Item For Supplier</h1>
+        <h4><a href = "/supplier"> Back to Supplier List </a></h4>
+        <p>Name : <%= supplier.name %> </p>
+        <p>City : <%= supplier.city %> </p>
+        <h4>List Item</h4>
+        <ul>
+            <%supplier.items.forEach(item=>{%>
+                <li> <%= item.name %>      @<%=helper(item.supplierItem.price)%></li> 
+            <%})%> 
+        <ul>
+        </br>
+        </br>
+        <form action="/supplier/<%=supplier.id%>/additem" method="post">
+        <h5>list item </h5>
+        <select name = "itemId" >
+        <%item.forEach(item=>{%>
+            <option value = "<%=item.id%>"> <%= item.name %> </option>
+        <%})%>
+        </select>
+        </br>
+        </br>
+            <p>price</p>
+            <input type="text" placeholder = 'eg:40000000' name="price" >
+        </br>
+        </br>
+        <button type="submit"> Add Item</button>
+        </form>
+    </center>
+</body>
+</html>

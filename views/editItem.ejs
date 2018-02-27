@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <title>Supplier</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+    <center>
+    <h2> Add Item Data </h2>
+    <%if(err){%>
+        <h5><a href = "/item"> Back To Item List </a></h5>
+        <p style = "color:red"> Item gagal terupdate !! <p>
+        <p style = "color:red"> <%= err.errors[0].message %> <p>
+    <%}else{%>
+    <form class = "" action="/item/edit/<%=data.id%>" method = "post">
+        <p>Product Name</p>
+        <input type = "text" placeholder = "product name" name = "name" value ="<%=data.name%>">
+        </br>
+        </br>
+        <p>Brand</p>  
+        <input type = "text" placeholder = "brand" name = "brand" value ="<%=data.brand%>" >
+        </br>
+        </br>
+        <p>Code Item</p>
+        <input type = "text" placeholder = "code item" name = "codeitem" value ="<%=data.codeitem%>" >
+        </br>
+        </br>
+        <button> Submit Data </button>  
+    </form>
+    <%}%>
+    <center>
+</body>
+</html>

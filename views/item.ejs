@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html >
+<% include ./partial/head %>
+<head>
+    <title>Supplier</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+    <center>
+    <h1>List Item</h1>
+    <h3><a href ="/item/add"> Add Item </a></h3>
+    <table class = 'table'>
+        <tr>
+            <th>No</th>
+            <th>Name</th>
+            <th>Brand</th>
+            <th>Code Item</th>
+            <th>List Supplier
+            <th>Option</th>
+        </tr>
+       <%data.forEach((item,index)=>{%>
+        <tr>
+            <td><%= index+1       %></td>
+            <td><%= item.name     %></td>
+            <td><%= item.brand    %></td>
+            <td><%= item.codeitem %></td>
+            <%if(item.suppliers.length !== 0){%>
+                <td>
+                <%item.suppliers.forEach(supplier=>{%>
+                    <li><%=supplier.name%></li>
+                <%})%>
+                </td>
+            <%}else{%>
+                <td>Not Supply yet</td>
+            <%}%>
+            <td>
+                <a href = "/item/edit/<%=item.id%>"> Edit </a> ||
+                <a href = "/item/delete/<%=item.id%>" onclick = "return confirm('are you sure want to delete this data?')"> Delete</a>
+            </td>
+        </tr>
+        <%})%>
+    </table>
+    </center>
+</body>
+</html>
