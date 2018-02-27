@@ -6,6 +6,8 @@ module.exports = (sequelize, DataTypes) => {
     price: DataTypes.INTEGER
   }, {});
   SupplierItem.associate = function(models) {
+    SupplierItem.belongsTo(models.Supplier)
+    SupplierItem.belongsTo(models.Item)
     // associations can be defined here
   };
   return SupplierItem;

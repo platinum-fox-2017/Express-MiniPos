@@ -9,10 +9,46 @@
       <button type="button" onclick="location.href='/'">Home</button>
       <button type="button" onclick="location.href='/items'">Items</button>
       <button type="button" onclick="location.href='/suppliers'">Suppliers</button>
-      <button type="button" onclick="location.href='/suppliers'">Search</button>
+      <button type="button" onclick="location.href='/search'">Search</button>
     </nav>
     <div>
       <h2>Search Page</h2>
+      <form action="/search" method="post">
+        <fieldset>
+          <label for="name">Name Items</label>
+          <input name="name" type="text" placeholder="Name Items" value=""><br><br>
+      
+          <label for="min">Min Price</label>
+          <input name="min" type="text" placeholder="Min Price" value="">
+      
+          <label for="max">Max Price</label>
+          <input name="max" type="text" placeholder="Max Price" value="">
+      
+          <button type="submit">Search</button>
+        </fieldset>
+      </form>
+      <br>
+      <h2>Search Result</h2>
+      <table>
+        <thead>
+          <th>ID</th>
+          <th>Item Name</th>
+          <th>Supplier Name</th>
+          <th>Price</th>
+        </thead>
+        <tbody>
+          <%if(results) {%>
+            <%results.forEach((result) => {%>
+              <tr>
+                <td></td>
+                <td><%= result.Item.getItemBrand()%></td>
+                <td><%= result.Supplier.name%></td>
+                <td><%= result.price%></td>
+              </tr>
+            <%})%>
+          <%}%>
+        </tbody>
+      </table>
     </div>
   </body>
 </html>
