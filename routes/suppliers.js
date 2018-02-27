@@ -11,6 +11,7 @@ routes.get('/',function(req,res){
         suppliers: dataSuppliers
       }
       res.render('suppliers/suppliers.ejs',obj);
+      // res.send(dataSuppliers);
     })
 })
 
@@ -30,7 +31,7 @@ routes.post('/add',function(req,res){
 })
 
 routes.get('/edit/:id',function(req,res){
-  models.Supplier.findById(req.param('id')).then(dataSuppliers => {
+  models.Supplier.findById(req.params.id).then(dataSuppliers => {
     let obj = {
       id: dataSuppliers.id,
       nama: dataSuppliers.name,
@@ -56,6 +57,33 @@ routes.get('/delete/:id',function(req,res){
     where:{
       id:req.params.id
     }
+  }).then(function(){
+    res.redirect('/suppliers');
+  })
+})
+
+routes.get('/additem/:id',function(req,res){
+  models.Supplier.findAll({include:[{model:models.Item}],
+    where:{id:req.params.id}})
+    .then(dataSuppliers => {
+      models.Item.findAll({}).then(dataItems => {
+        let obj = {
+          id: dataSuppliers.id,
+          suppliers: dataSuppliers,
+          items: dataItems
+        }
+        res.render('suppliers/additem.ejs',obj)
+    })
+  })
+})
+
+routes.post('/additem/:id',function(req,res){
+  models.SupplierItem.create({
+    SupplierId: req.body.supplierId,
+    ItemId: req.body.getItemId,
+    price: req.body.newPrice,
+    createdAt: new Date(),
+    updatedAt: new Date()
   }).then(function(){
     res.redirect('/suppliers');
   })

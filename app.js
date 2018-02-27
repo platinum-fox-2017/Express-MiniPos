@@ -5,7 +5,9 @@ const bodyParser = require('body-parser');
 var app = express();
 const routes = require('./routes');
 
-app.set('view engine', 'ejs');
+app.set('view engine','ejs');
+
+app.locals.helper = require('./helper/index.js');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 

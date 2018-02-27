@@ -4,7 +4,7 @@ const models = require('../models');
 const sequelize = require('sequelize');
 
 routes.get('/',function(req,res){
-  models.Item.findAll({})
+  models.Item.findAll({include:[{model:models.Supplier}]})
     .then((dataItems)=>{
       let obj = {
         title: 'Items',

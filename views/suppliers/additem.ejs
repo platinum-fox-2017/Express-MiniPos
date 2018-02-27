@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <title>ADD ITEM TO SUPPLIER</title>
+  </head>
+  <body>
+    <h2>ADD ITEM TO SUPPLIER</h2></br>
+    <ul>
+      <li>Name: <%= suppliers[0].name %></li>
+      <li>City: <%= suppliers[0].kota %></li>
+      <li>Address</li></br>
+      <li><h2>List Item</h2></li>
+      <% for(let i in suppliers[0].Item){ %>
+        <li><%= suppliers[0].Item[i].name %><%= suppliers[0].Item[i].SupplierItem.price %></li>
+      <% } %>
+    </ul></br>
+    <table>
+      <form action="" method="post">
+        <input type="hidden" value="<%= suppliers[0].id %>" name="supplierId">
+        <tr>
+          <th>List Item</th>
+          <th>Price</th>
+        </tr>
+        <tr>
+          <td>
+            <select name="getItemId">
+              <% for(let i in items){ %>
+                <option value="<%= items[i].id %>"><%= items[i].name %></option>
+              <% } %>
+            </select>
+          </td>
+          <td>
+            <input type="integer" value="" name="newPrice" placeholder="eg.2000000"><br>
+          </td>
+        </tr>
+        <input type="submit">
+      </form>
+    </table>
+  </body>
+</html>
