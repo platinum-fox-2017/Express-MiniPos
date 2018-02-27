@@ -26,12 +26,7 @@
           <label>Item List</label>
           <select name = "ItemId">
 							<%dataItem.forEach(item =>{%>
-								<%dataSupplier.Items.forEach(supplier=>{%>
-									<%if(item.name !== supplier.name){%>
-										<option value = "<%=item.id%>"><%=item.id%>-<%=item.name%></option>
-									<%}%>
-								<%})%>
-									
+										<option value = "<%=item.id%>"><%=item.id%>-<%=item.name%></option>								
 							<%})%>
 						</select>
           <label>Price</label>

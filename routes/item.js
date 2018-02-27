@@ -3,15 +3,16 @@ const app = express();
 const router = express.Router()
 
 const models = require('../models')
+const currency = require('../helpers/currency')
 
 router.get('/',function(req,res){
   models.Item.findAll({
     order:[['name','asc']],
     include:[models.Supplier]})
     .then(items=>{
-    // console.log(JSON.parse(JSON.stringify(items)))
-    res.send(items)
-    res.render('item/items',{data:items})
+    console.log(JSON.parse(JSON.stringify(items[0])))
+    // res.send(items)
+    res.render('item/items',{data:items,convert:currency})
   }).catch(err=>{
     res.send(err)
   })

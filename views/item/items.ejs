@@ -20,8 +20,8 @@
 					<th>ID</th>
 					<th>Name</th>
 					<th>Brand</th>
-					<th>List Supplier</th>
 					<th>Code Item</th>
+					<th>List Supplier</th>
 					<th>Action</th>
 				</tr>
 			</thead>
@@ -32,8 +32,22 @@
 					<td><%=item.id%></td>
 					<td><%=item.name%></td>
 					<td><%=item.brand%></td>
-					<td><%=item.brand%></td>
 					<td><%=item.codeitem%></td>
+					<%if(item.Suppliers.length !== 0){%>
+						
+							<td>
+								<ol>
+									<%item.Suppliers.forEach(list=>{%>
+									<li><%=list.name%> - <%=convert.formatuang(list.SupplierItem.price)%></li>
+									<%})%>
+								</ol>
+							</td>
+						
+					<%}else{%>
+						<td>No Supplier yet</td>
+					<%}%>
+					
+					
 					<td><a href = "/items/edit/<%=item.id%>"><button type="button" class="btn btn-info">Edit</button></a>  <a href = "/items/delete/<%=item.id%>" onclick="return confirm('Delete item ?')"><button type="button" class="btn btn-danger">Delete</button></a> </td>
 				</tr>
 				<%})%>
