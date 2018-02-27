@@ -1,0 +1,25 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <%- include('../partials/navbar')  %>
+
+        <h3>Add Item</h3>
+        
+        <p><%= err %></p>
+
+        <form method="POST">
+            Name: <br>
+            <input type="text" name="name"><br>
+            Brand: <br>
+            <input type="text" name="brand"><br>
+            Kode Item: <br>
+            <input type="text" name="codeItem"><br>
+            <br>
+            <input type="submit" value="Submit">
+        </form>
+        
+        <%- include('../partials/footer')  %>
+    </body>
+</html>

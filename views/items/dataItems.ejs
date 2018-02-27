@@ -1,0 +1,34 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <%- include('../partials/navbar')  %>
+
+        <h3>List Items</h3>
+        
+        <a href="/items/add">Add Items</a>
+        
+        <table border=1 cellspacing=0 cellpadding=10>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Brand</th>
+                <th>Code Item</th>
+                <th>Action</th>
+            </tr>
+            
+            <% for(let i=0; i<items.length; i++) { %>
+            <tr>
+                <td><%= items[i].id %></td>
+                <td><%= items[i].name %></td>
+                <td><%= items[i].brand %></td>
+                <td><%= items[i].codeItem %></td>
+                <td><a href="/items/edit/<%= items[i].id %>">Edit</a> | <a href="/items/delete/<%= items[i].id %>">Delete</a></td>
+            <% } %>
+            </tr>
+            
+        </table>
+        <%- include('../partials/footer')  %>
+    </body>
+</html>

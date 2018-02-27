@@ -1,0 +1,21 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <%- include('../partials/navbar')  %>
+
+        <h3>Add Suppliers</h3>
+
+        <form method="POST">
+            Name: <br>
+            <input type="text" name="name" value="<%= supplier.name%>"><br>
+            Kota: <br>
+            <input type="text" name="kota" value="<%= supplier.kota%>"><br>
+            <br>
+            <input type="submit" value="Submit">
+        </form>
+        
+        <%- include('../partials/footer')  %>
+    </body>
+</html>

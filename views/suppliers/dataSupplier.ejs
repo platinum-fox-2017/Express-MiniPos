@@ -1,0 +1,44 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <%- include('../partials/navbar')  %>
+
+        <h3>List Supplier</h3>
+        
+        <a href="/suppliers/add">Add Suppliers</a>
+        
+        <table border=1 cellspacing=0 cellpadding=10>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Kota</th>
+                <th>List Item</th>
+                <th>Add Item</th>
+                <th>Action</th>
+            </tr>
+            
+            <% for(let i=0; i<suppliers.length; i++) { %>
+            <tr>
+                <td><%= suppliers[i].id %></td>
+                <td><%= suppliers[i].name %></td>
+                <td><%= suppliers[i].kota %></td>
+
+                <% if(suppliers[i].Items.length == 0) { %>
+                    <td>No Item yet</td>
+                <% } else { %>
+                <td><% for(let j=0; j<suppliers[i].Items.length; j++) { %>
+                    <li><%= suppliers[i].Items[j].name%> @ $<%= suppliers[i].SupplierItems[j].price%> </li>
+                <% } %></td>
+                <% } %>
+
+                <th><a href="/suppliers/<%= suppliers[i].id %>/additem">Assign Item</a></th>
+                <td><a href="/suppliers/edit/<%= suppliers[i].id %>">Edit</a> | <a href="/suppliers/delete/<%= suppliers[i].id %>">Delete</a></td>
+            <% } %>                
+            </tr>
+            
+        </table>
+        <%- include('../partials/footer')  %>
+    </body>
+</html>
