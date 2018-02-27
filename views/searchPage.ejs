@@ -1,0 +1,50 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="/styles/css.css">
+  <title><%= title %></title>
+</head>
+
+<body>
+  <%- include('./partial/navigation.ejs') %>
+  <div class="main">
+    <div class="content">
+      <h1><%= header %></h1>
+
+      <form action="/search" method="post">
+        Item Name:<br>
+        <input type="text" name="itemName" value=""><br>
+        <br>
+        Minimum Price:<br>
+        <input type="number" name="minPrice" value="0"><br>
+        <br>
+        Maximum Price:<br>
+        <input type="number" name="maxPrice" value="30000000"><br>
+        <br>
+        <input type="submit" value="Search">
+      </form>
+      <br>
+      <p>SEARCH RESULT:</p>
+      <table>
+        <tr>
+            <th>Item ID</th>
+            <th>Item Name</th>
+            <th>Supplier Name</th>
+            <th>Price</th>
+        </tr>
+        <!-- loop -->
+        <% for (let i = 0; i < foundSupplierItems.length; i++) { %>
+          <tr>
+            <td><%= foundSupplierItems[i].Item.id %></td>
+            <td><%= foundSupplierItems[i].Item.name %></td>
+            <td><%= foundSupplierItems[i].Supplier.name %></td>
+            <td><%= foundSupplierItems[i].price %></td>
+          </tr>
+        <% } %>
+      </table>
+    </div>
+  </div>
+
+</body>
+
+</html>

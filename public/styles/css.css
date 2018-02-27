@@ -1,0 +1,83 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+h1 {
+  text-align: center;
+  color: black;
+  font-family: "Arial";
+  margin-top: 30px;
+  font-size: 2.4em;
+}
+
+table {
+  width: 100%;
+  border: solid 1px;
+}
+table th {
+  border: solid 1px;
+  padding : 4px 2px;
+}
+table td {
+  border: solid 1px;
+  padding : 2px;
+  text-align: center;
+}
+
+#topBanner {
+  height: 60px;
+  background-color: black;
+  padding: 0px;
+  padding-left: 100px;
+  padding-right: 100px;
+  display: flex;
+  align-items: center;
+}
+
+.navigation {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.navigation a {
+  margin: 0px 10px;
+}
+.navigation button {
+  padding: 2px 5px;
+  width: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: none;
+  color: rgb(190,190,190  );
+  font-size: 16px;
+  font-weight: bold;
+  outline:none;
+}
+button:hover {
+  color: rgb(255,255,255)
+}
+
+.main{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.content{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0px 100px;
+}
+.form {
+  display: flex;
+  padding: 10px 0px;
+  margin:auto;
+
+}
+
+body {
+  background-color: rgb(244,244,244);
+}

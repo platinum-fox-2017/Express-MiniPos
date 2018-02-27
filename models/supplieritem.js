@@ -7,6 +7,8 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   SupplierItem.associate = function(models) {
     // associations can be defined here
+    SupplierItem.belongsTo(models.Supplier)
+    SupplierItem.belongsTo(models.Item)
   };
   return SupplierItem;
 };

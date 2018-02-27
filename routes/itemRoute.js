@@ -1,15 +1,15 @@
 const express = require('express')
 const router = express.Router()
-const ItemCRUD = require('../controller/index.js').ItemCRUD
+const ItemController = require('../controller/index.js').ItemCRUD
 
-router.get('/', ItemCRUD.itemPage)
+router.get('/', ItemController.itemPage)
 
-router.get('/add', ItemCRUD.itemAddPage)
-router.post('/add', ItemCRUD.itemAddPage)
+router.get('/add', ItemController.itemAddPage)
+router.post('/add', ItemController.itemAddPagePost)
 
-router.get('/edit/:id', ItemCRUD.itemEditPage)
-router.post('/edit/:id', ItemCRUD.itemEditPage)
+router.get('/edit/:id', ItemController.itemEditPage)
+router.post('/edit/:id', ItemController.itemEditPagePost)
 
-router.get('/delete/:id', ItemCRUD.itemDeletePage)
+router.get('/delete/:id', ItemController.itemDeletePage)
 
 module.exports = router;

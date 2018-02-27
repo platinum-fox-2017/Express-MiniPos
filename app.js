@@ -7,6 +7,7 @@ const routes = require('./routes/index.js')
 app.set('view engine', 'ejs')
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static('public'))
+app.locals.helper = require('./views/helper')
 
 app.use('/', routes)
 
