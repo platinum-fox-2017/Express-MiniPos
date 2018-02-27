@@ -1,0 +1,36 @@
+<body>
+    <h1>Add Supplier</h1>
+    <form name="form" method="POST" action="/suppliers/addSupplierItem/<%= data.id %>">
+    <table>
+        <tr>
+        <td>Name</td>
+        <td><input type="text" name="name" value ="<%= data.name %>" required readonly></td>
+        </tr>
+        <tr>
+        <td>Kota</td>
+        <td><input type="text" name="kota" value ="<%= data.kota %>" required readonly></td>
+        </tr>
+
+        <tr>
+        <td>Item</td>
+        <td><select name="ItemId">
+            <option value="" selected> </option>
+          <%data_item.forEach((data_item) =>
+          {
+            %>
+            <option value="<%= data_item.id %>"> <%=data_item.name%> </option>
+          <%})%>
+          </select></td>
+        </tr>
+
+        <tr>
+        <td>Price</td>
+        <td><input type="text" name="price" required></td>
+        </tr>
+
+        <tr>
+        <td colspan="2"><input type="submit" value="Save" ></td>
+        </tr>
+    </table>
+    </form>
+</body>

@@ -1,0 +1,15 @@
+'use strict';
+module.exports = (sequelize, DataTypes) => {
+  var SupplierItem = sequelize.define('SupplierItem', {
+    id:{ type:DataTypes.INTEGER,primaryKey: true,autoIncrement: true},
+    SupplierId: DataTypes.INTEGER,
+    ItemId: DataTypes.INTEGER,
+    price: DataTypes.INTEGER
+  }, {});
+  SupplierItem.associate = function(models) {
+    // associations can be defined here
+    SupplierItem.belongsTo(models.Supplier)
+    SupplierItem.belongsTo(models.Item)
+  };
+  return SupplierItem;
+};

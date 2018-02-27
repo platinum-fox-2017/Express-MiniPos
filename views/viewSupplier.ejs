@@ -1,0 +1,39 @@
+<body>
+    <h1>List Supplier</h1>
+    <a href="/suppliers/add">Add</a>
+    <table border='1'>
+        <tr>
+          <td><center>Id.</center></td>
+          <td><center>Name</center></td>
+          <td><center>Kota</center></td>
+          <td><center>Item</center></td>
+          <td><center>Actions</center></td>
+          <td colspan=2><center>Options</center></td>
+        </tr>
+      <% let i=1 %>
+      <% data.forEach(data =>{ %>
+        <tr>
+          <td><%= i++ %></td>
+          <td><%= data.name %></td>
+          <td><%= data.kota %></td>
+          <td>
+          <% if(data.Items.length>0){
+
+          for(let a=0;a< data.Items.length ;a++){%>
+           <%= a+1 +' . '+ data.Items[a].name+'@'+ my_helper.formatuang(data.Items[a].SupplierItem.price) %><br>
+          <% }
+          }else{
+          %>
+          No item yet
+          <%
+          }%>
+          </td>
+          <td><a href="/suppliers/addSupplierItem/<%= data.id %>">Add Item</a></td>
+          <td><a href="/suppliers/update/<%= data.id %>">Update</a></td>
+          <td><a href="/suppliers/delete/<%= data.id %>" onclick="return confirm('delete this ?');">Delete</a></td>
+        </tr>
+      <% })%>
+    </table>
+
+    <a href="/">Back</a>
+</body>

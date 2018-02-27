@@ -1,0 +1,23 @@
+<body>
+    <h1>Update Item</h1>
+
+    <form name="form" method="POST" action="/items/update/<%= data.id%>">
+    <table>
+        <tr>
+        <td>Name</td>
+        <td><input type="text" name="name" required value="<%= data.name %>"></td>
+        </tr>
+        <tr>
+        <td>Brand</td>
+        <td><input type="text" name="brand" required value="<%= data.brand %>"></td>
+        </tr>
+        <tr>
+        <td>Code Item</td>
+        <td><input type="text" name="codeitem" required value="<%= data.codeitem %>"></td>
+        </tr>
+        <tr>
+        <td colspan="2"><input type="submit" value="Save" ></td>
+        </tr>
+    </table>
+    </form>
+</body>

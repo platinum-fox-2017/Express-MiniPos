@@ -1,0 +1,19 @@
+<body>
+    <h1>Update Supplier</h1>
+
+    <form name="form" method="POST" action="/suppliers/update/<%= data.id%>">
+    <table>
+        <tr>
+        <td>Name</td>
+        <td><input type="text" name="name" required value="<%= data.name %>"></td>
+        </tr>
+        <tr>
+        <td>Kota</td>
+        <td><input type="text" name="kota" required value="<%= data.kota %>"></td>
+        </tr>
+        <tr>
+        <td colspan="2"><input type="submit" value="Save" ></td>
+        </tr>
+    </table>
+    </form>
+</body>

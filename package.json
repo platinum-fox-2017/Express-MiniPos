@@ -1,0 +1,22 @@
+{
+  "name": "express-minipos",
+  "version": "1.0.0",
+  "description": "selamat mengerjakan",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/platinum-fox-2017/Express-MiniPos.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/platinum-fox-2017/Express-MiniPos/issues"
+  },
+  "homepage": "https://github.com/platinum-fox-2017/Express-MiniPos#readme",
+  "dependencies": {
+    "sequelize": "^4.34.1"
+  }
+}

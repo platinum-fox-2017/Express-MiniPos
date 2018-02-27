@@ -1,0 +1,26 @@
+<body>
+    <h1>List Item</h1>
+    <a href="/items/add">Add</a>
+    <table border='1'>
+        <tr>
+          <td><center>Id.</center></td>
+          <td><center>Name</center></td>
+          <td><center>Brand</center></td>
+          <td><center>Code Item</center></td>
+          <td colspan=2><center>Options</center></td>
+        </tr>
+      <% let i=1 %>
+      <% data.forEach(data =>{ %>
+        <tr>
+          <td><%= i++ %></td>
+          <td><%= data.name %></td>
+          <td><%= data.brand %></td>
+          <td><%= data.codeitem %></td>
+          <td><a href="/items/update/<%= data.id %>">Update</a></td>
+          <td><a href="/items/delete/<%= data.id %>" onclick="return confirm('delete this ?');">Delete</a></td>
+        </tr>
+      <% })%>
+    </table>
+
+    <a href="/">Back</a>
+</body>
