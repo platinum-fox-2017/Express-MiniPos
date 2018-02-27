@@ -5,13 +5,9 @@
     <title>ITEMS</title>
   </head>
   <h2>ITEMS</h2>
+
   <body>
-    <form action="/suppliers/add" method="post">
-      <input type="text" name="name" value="" placeholder="your name here">
-      <input type="text" name="brand" value="" placeholder="your brand here">
-      <input type="text" name="codeitem" value="" placeholder="your item code here">
-      <button type="button" name="button">ADD NEW ITEM</button>
-    </form>
+    <a href="/items/add">ADD ITEM</a>
     <table border = '1'>
       <thead>
         <td>ID</td>
@@ -25,7 +21,8 @@
           <td><%=data.name%></td>
           <td><%=data.brand%></td>
           <td><%=data.codeitem%></td>
-          
+          <td> <a href="/items/update/<%=data.id%>">UPDATE ITEM</a></td>
+          <td> <a href="/items/delete/<%=data.id%>">DELETE ITEM</a> </td>
         </tr>
       <%})%>
     </table>

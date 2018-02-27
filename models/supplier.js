@@ -5,7 +5,8 @@ module.exports = (sequelize, DataTypes) => {
     kota: DataTypes.STRING
   }, {});
   Supplier.associate = function(models) {
-    // associations can be defined here
+    Supplier.hasMany(models.SupplierItem)
+    Supplier.belongsToMany(models.Item,{through:"SupplierItem"})
   };
   return Supplier;
 };

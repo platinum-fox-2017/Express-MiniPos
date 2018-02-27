@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ADD ITEM</title>
+  </head>
+  <h2>ADD ITEM</h2>
+  <body>
+    <%if(err){%>
+        <%=err.errors[0].message%>
+    <%}%>
+    <form action="/items/add" method="post">
+      <input type="text" name="name" value="" placeholder="your name here">
+      <input type="text" name="brand" value="" placeholder="your brand here">
+      <input type="text" name="codeitem" value="" placeholder="your item code here">
+      <input type="submit" name="" value="ADD NEW ITEM">
+    </form>
+  </body>
+</html>

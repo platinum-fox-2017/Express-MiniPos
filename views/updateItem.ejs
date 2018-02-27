@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>UPDATE ITEM</title>
+  </head>
+  <h2>UPDATE ITEM</h2>
+  <%if(err){%>
+      <%=err.errors[0].message%>
+  <%}%>
+  <body>
+    <form class="" action="/items/update/<%=dataItems.id%>" method="post">
+      <input type="text" name="name" value="<%=dataItems.name%>">
+      <input type="text" name="brand" value="<%=dataItems.brand%>">
+      <input type="text" name="codeitem" value="<%=dataItems.codeitem%>">
+      <input type="submit" name="" value="UPDATE ITEM">
+    </form>
+  </body>
+</html>

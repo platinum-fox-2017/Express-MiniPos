@@ -16,16 +16,29 @@
         <td>ID</td>
         <td>NAME</td>
         <td>KOTA</td>
+        <td>LIST ITEM</td>
+        <td>ADD ITEM</td>
+        <td>OPTION</td>
       </thead>
       <%dataSuppliers.forEach(data=>{%>
         <tr>
           <td><%=data.id%></td>
           <td><%=data.name%></td>
           <td><%=data.kota%></td>
-          <td> <a href="/suppliers/update/<%=data.id%>"><button type="button" name="button"> UPDATE </button></a></td>
           <td>
-            <a href="/suppliers/delete/<%=data.id%>">DELETE</a>
+            <%data.Items.forEach(dataItem=>{%>
+              <ul>
+                <li><%=`${dataItem.name} Rp.${dataItem.SupplierItem.price}`%></li>
+              </ul>
+            <%})%>
           </td>
+          <td> <a href="/suppliers/assign/<%=data.id%>"><button type="button" name="button"> ASSIGN ITEM </button></a></td>
+          <td>
+            <ul>
+              <li><a href="/suppliers/update/<%=data.id%>"><button type="button" name="button"> UPDATE </button></a></li>
+              <li><a href="/suppliers/delete/<%=data.id%>"><button type="button" name="button"> DELETE </button></a></li>
+            </ul>
+          </td
         </tr>
       <%})%>
     </table>

@@ -1,11 +1,12 @@
-const {Supplier} = require('../models')
+const {Item,Supplier,SupplierItem} = require('../models')
 const express = require('express')
 const router = express.Router()
 
 
 router.get('/',(req,res)=>{
   Supplier.findAll({
-    order:[['id','ASC']]
+    order:[['id','ASC']],
+    include:[Item]
   })
   .then(dataSuppliers=>{
     // res.send(dataSuppliers)
@@ -53,6 +54,31 @@ router.get('/delete/:id',(req,res)=>{
       id:req.params.id
     }
   }).then(data=>{
+    res.redirect('/suppliers')
+  })
+})
+
+router.get('/assign/:id',(req,res)=>{
+  Supplier.findOne({
+    where:{
+      id:req.params.id,
+    },include:Item
+  }).then(dataSuppliers=>{
+    Item.findAll()
+    .then(dataItem=>{
+      // res.send(dataItem)
+      res.render('assignItem',{dataSuppliers:dataSuppliers,dataItem:dataItem})
+    })
+  })
+})
+
+router.post('/assign/:id',(req,res)=>{
+  // res.send(req.body);
+  SupplierItem.create({
+    SupplierId:req.params.id,
+    ItemId:req.body.id_item,
+    price:req.body.price
+  }).then(()=>{
     res.redirect('/suppliers')
   })
 })

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>ASSIGN ITEM</title>
+  </head>
+  <body>
+      <h3><%=dataSuppliers.name%></h3>
+        <h4><%=dataSuppliers.kota%></h4>
+        <h4>LIST ITEM</h4>
+          <table border = "1">
+            <thead>
+              <td>ITEM NAME</td>
+              <td>ITEM PRICE</td>
+            </thead>
+            <%dataSuppliers.Items.forEach(data=>{%>
+            <tr>
+                <td><%=data.name%></td>
+                <td><%=data.SupplierItem.price%></td>
+            </tr>
+            <%})%>
+          </table>
+          <br>
+          <br>
+          <form class="" action="/suppliers/assign/<%=dataSuppliers.id%>" method="post">
+            <select name="id_item">
+                <%dataItem.forEach(data=>{%>
+                    <option value=<%=data.id%>><%=data.name%></option>
+                <%})%>
+            </select>
+            <input type="text" name="price" value="0" placeholder="item price">
+            <input type="submit" name="" value="submit item">
+          </form>
+  </body>
+</html>
