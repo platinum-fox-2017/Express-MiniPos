@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const Model = require('../models')
+const Op = require('sequelize').Op
 
 router.get('/',(req, res)=> {
     Model.Supplier.findAll({
@@ -63,8 +64,19 @@ router.get('/:id/addItem',(req,res)=>{
     Model.Supplier.findById(req.params.id,{
         include:[Model.Item]
     }).then(data=>{
-        // res.send(data)
-        Model.Item.findAll().then(dataItem=>{
+        let arr = []
+       let item= JSON.parse(JSON.stringify(data.Items))
+        for(let i =0; i<item.length; i++){
+            arr.push(item[i].id)
+        }
+        //res.send(arr)
+        Model.Item.findAll({
+            where:{
+                id:{
+                    [Op.notIn] : arr
+                }
+            }
+        }).then(dataItem=>{
             res.render('./supplier/addItem', {supplier:data, item:dataItem})
         })
     }).catch(err=>{

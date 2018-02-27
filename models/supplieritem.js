@@ -6,9 +6,6 @@ module.exports = (sequelize, DataTypes) => {
     ItemId: DataTypes.INTEGER,
     price: DataTypes.INTEGER
   }, {
-    hooks:{
-      
-    }
   });
   SupplierItem.associate= models=>{
     SupplierItem.belongsTo(models.Item,{
