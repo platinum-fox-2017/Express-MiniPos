@@ -5,13 +5,14 @@ const models = require('../models')
 
 router.get('/', (request, response) => {
     models.Item.findAll({
+        include: [{model: models.Supplier},{model: models.SupplierItem}],
         order: [['id','ASC']]
     }).then(projects => {
         let obj= {
             title: 'List Items',
             arrItems: projects
         }
-        // response.send(projects); // return array of objects items
+        // response.send(obj); // return array of objects items
         response.render('show_items.ejs', obj); 
     })
 });

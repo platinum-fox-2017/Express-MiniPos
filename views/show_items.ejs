@@ -14,6 +14,7 @@
                     <th>Name</th>
                     <th>Brand</th>
                     <th>Item Code</th>
+                    <th>List Supplier</th>
                     <th>Action</th>
                 </tr>
                 <% for (let i = 0; i < arrItems.length; i++) { %>
@@ -22,6 +23,18 @@
                     <td><%= arrItems[i].Name %></td>
                     <td><%= arrItems[i].Brand %></td>
                     <td><%= arrItems[i].CodeItem %></td>
+                    <td><% if (arrItems[i].Suppliers.length == 0) { %>
+                        <%= 'No supplier yet' %>
+                        <% } else { %>
+                            <ul>
+                            <% for (let j = 0; j < arrItems[i].Suppliers.length; j++) { %>
+                                <li>
+                                    <%= arrItems[i].Suppliers[j].Name %> @ <%= helpers.formatuang(arrItems[i].Suppliers[j].SupplierItem.Price) %>
+                                </li>
+                            <% } %>
+                            </ul>
+                        <% } %>      
+                    </td>
                     <td><a href="/items/edit/<%=arrItems[i].id%>">Edit</a> || <a href="/items/delete/<%=arrItems[i].id%>">Delete</a></td>
                 </tr>
                 <% } %>
