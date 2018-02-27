@@ -8,6 +8,7 @@ const model = require('./models');
 
 const bodyParser = require('body-parser')
 
+
 const app = express()
 const port = 3000
 
@@ -22,7 +23,7 @@ app.set('view engine', 'ejs');
 app.use('/', indexRoutes)
 app.use('/suppliers', supplier)
 app.use('/items', item)
-
+app.locals.helpers = require('./helpers')
 
 app.listen(port, log =>{
   console.log(`App is running on port: ${port}`)

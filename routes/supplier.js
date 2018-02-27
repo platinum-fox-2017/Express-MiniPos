@@ -85,14 +85,14 @@ routes.get('/:id/additem',function(req, res){
         }
     }).then(suppliers => {
         // res.send(suppliers)
-        var arr = []
+        var arrId = []
         suppliers.Items.forEach(supl => {
-            arr.push(supl.id)  
+            arrId.push(supl.id)  
         })
-        // res.send(arr)
+        // res.send(arrId)
         model.Item.findAll({
             where: {
-                id: {[Op.notIn]:arr}
+                id: {[Op.notIn]:arrId}
             }
         })
         .then(items => {
@@ -106,9 +106,6 @@ routes.get('/:id/additem',function(req, res){
 })
 
 routes.post('/:id/additem',function(req, res){
-    // let objSupl = {
-        
-    // }
 
     model.SupplierItem.create({
         SupplierId: req.params.id,

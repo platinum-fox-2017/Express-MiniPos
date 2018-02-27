@@ -20,6 +20,7 @@
               <td><b>Product Name</b></td>
               <td><b>Brand Product</b></td>
               <td><b>Code Item</b></td>
+              <td><b>List Supplier</b></td>
               <td colspan=2><center><b>Action</b></center></td>
             </tr>
                 <% let no=1 %>
@@ -29,6 +30,21 @@
               <td><%= dataItem.name %></td>
               <td><%= dataItem.brand %></td>
               <td><%= dataItem.codeItem %></td>
+              <% if(dataItem.Suppliers.length > 0) { %>
+                <td>
+                    <% dataItem.Suppliers.forEach(function(list){ %>
+                            <li><%= list.name %></li>
+                    <%  }) %>
+                </td>
+                
+              <% } else { %>
+                
+                <td>Not Supplier Yet</td>
+                
+            
+             <% } %>
+
+
               <td><a href="/items/edit/<%= dataItem.id %>">Edit</a></td>
               <td><a href="/items/delete/<%= dataItem.id %>" onclick="return confirm('delete this item ?');">Delete</a></td>
             </tr>

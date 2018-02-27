@@ -5,6 +5,9 @@ const model = require('../models')
 routes.get('/', function(req, res){
     model.Item.findAll({
         order: [['id','ASC']],
+        include:[{
+            model: model.Supplier
+        }]
     }).then(items => {
         // res.send(items)
         res.render('listItem',({items: items}))
@@ -57,7 +60,7 @@ routes.post('/edit/:id', function(req, res){
         where: {
             id: req.params.id
         }
-    }).then(Items => {
+    }).then(items => {
         res.redirect('/items')
     }).catch(err => {
         res.send(err)
