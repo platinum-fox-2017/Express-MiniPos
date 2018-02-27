@@ -6,7 +6,11 @@ module.exports = (sequelize, DataTypes) => {
   },{
     hooks:{
       afterDestroy:function(Supplier,options){
-        console.log('hooooooooookkkkkkkk')
+        // console.log('===============',Supplier.dataValues)
+        // console.log('===============id',Supplier.id)
+        sequelize.models.SupplierItem.destroy({
+          where:{SupplierId:Supplier.id}
+        })
       }
     }
   });

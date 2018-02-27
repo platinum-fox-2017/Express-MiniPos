@@ -39,7 +39,10 @@ router.get('/edit/:id',function(req,res){
 })
 router.post('/edit/:id',function(req,res){
   let id = req.params.id
-  models.Item.update(req.body,{where:{id:id}}).then(data=>{
+  models.Item.update(req.body,{
+    where:{id:id},
+    validate:false})
+    .then(data=>{
     // console.log(JSON.parse(JSON.stringify(data)))
     res.redirect('/items')
   }).catch(err=>{
@@ -49,7 +52,10 @@ router.post('/edit/:id',function(req,res){
 
 router.get('/delete/:id',function(req,res){
   let id = req.params.id
-  models.Item.destroy({where:{id:id}}).then(()=>{
+  models.Item.destroy({
+    where:{id:id},
+    individualHooks:true})
+    .then(()=>{
     res.redirect('/items')
   })
 })

@@ -50,8 +50,11 @@ router.post('/edit/:id',function(req,res){
 })
 router.get('/delete/:id',function(req,res){
   let id =req.params.id
-  models.Supplier.destroy({where:{id:id}}).then(()=>{
+  models.Supplier.destroy({
+    where:{id:id},
+    individualHooks:true}).then(()=>{
     res.redirect('/suppliers')
+    // console.log('deleted')
   }).catch(err=>{
     res.send(err)
   })
