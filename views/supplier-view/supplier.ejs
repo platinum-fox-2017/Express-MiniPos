@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Supplier Page</title>
+</head>
+<body>
+    <center>
+        <h1>Supplier List</h1>
+        <div>
+        <form action="supplier/add" method="POST" class="supplier">
+            <input type="text" name="name" id="name" placeholder="Name">
+            <input type="text" name="city" id="city" placeholder="City">
+            <button type="submit">Add New Supplier</button>
+        </form>
+        </div>
+    </br>
+        <div>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>City</th>
+                    <th>List Item</th>
+                    <th>Add Item</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% data.map(element=>{ %>
+                <tr>
+                    <td><%=element.id%></td>
+                    <td><%=element.name%></td>
+                    <td><%=element.city%></td>
+                    <td></td>
+                    <td>
+                        <a href=""><button>Assign Item</button></a>
+                    </td>
+                    <td>
+                        <a href="supplier/edit/<%= element.id %>"><button>Edit</button></a>
+                        <a href="supplier/delete/<%= element.id %>"><button onclick="return confirm('Are you sure you want to delete <%=element.name%> ?');">Delete</button></a>
+                    </td>
+                </tr>
+                <% }) %>
+            </tbody>
+        </table>
+        </div>
+    </center>
+</body>
+</html>

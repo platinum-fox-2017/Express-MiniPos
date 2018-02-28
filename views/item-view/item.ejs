@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Item Page</title>
+</head>
+<body>
+    <center>
+        <h1>Item List</h1>
+        <div>
+        <form action="item/add" method="POST" class="item">
+            <input type="text" name="name" id="name" placeholder="Name">
+            <input type="text" name="brand" id="brand" placeholder="Brand">
+            <input type="text" name="codeitem" id="codeitem" placeholder="Code Item">
+            <button type="submit">Add New Item</button>
+        </form>
+        </div>
+        <div style="color: red">
+            <%=err%>
+        </div>
+    </br>
+        <div>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Brand</th>
+                    <th>Code Item</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% data.map(element=>{ %>
+                <tr>
+                    <td><%=element.id%></td>
+                    <td><%=element.name%></td>
+                    <td><%=element.brand%></td>
+                    <td><%=element.codeitem%></td>
+                    <td>
+                        <a href="item/edit/<%= element.id %>"><button>Edit</button></a>
+                        <a href="item/delete/<%= element.id %>"><button onclick="return confirm('Are you sure you want to delete <%=element.name%> ?');">Delete</button></a>
+                    </td>
+                </tr>
+                <% }) %>
+            </tbody>
+        </table>
+        </div>
+    </center>
+</body>
+</html>

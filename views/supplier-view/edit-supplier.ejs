@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Edit Supplier Page</title>
+</head>
+<body>
+    <center>
+        <h1>Edit Student</h1>
+        <div>
+        <form action="/supplier/edit/<%=data.id%>" method="POST" class="supplier">
+            <input type="text" name="name" id="name" placeholder= "Name" value="<%=data.name%>">
+            <input type="text" name="city" id="city" placeholder="City" value="<%=data.city%>">
+            <button type="submit">Update Supplier Data</button>
+        </form>
+        </div>
+    </center>
+</body>
+</html>

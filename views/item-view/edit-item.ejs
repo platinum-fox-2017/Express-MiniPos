@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Edit Item Page</title>
+</head>
+<body>
+    <center>
+        <h1>Edit Item</h1>
+        <div>
+        <form action="/item/edit/<%=data.id%>" method="POST" class="item">
+            <input type="text" name="name" id="name" placeholder= "Name" value="<%=data.name%>">
+            <input type="text" name="brand" id="brand" placeholder="Brand" value="<%=data.brand%>">
+            <input type="text" name="codeitem" id="codeitem" placeholder="Code Item" value="<%=data.codeitem%>">
+            <button type="submit">Update Item Data</button>
+        </form>
+        </div>
+        <div style="color: red">
+            <%=err%>
+        </div>
+    </center>
+</body>
+</html>
