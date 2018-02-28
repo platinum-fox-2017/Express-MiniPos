@@ -8,12 +8,14 @@
   <body>
       <h1>List Items</h1>
       <h2><a href= "/items/add">Add Item</a></h2>
-    <table>
+    <table border="">
         <tr>
           <th>ID</th>
           <th>Name</th> 
           <th>Brand</th>
           <th>Item Code</th>
+          <th>List Supplier</th>
+          <th>Action</th>
         </tr>
         <% items.sort((a,b) => a.id -b.id ).forEach((v,i) => { %>
             <tr>
@@ -21,6 +23,21 @@
               <td><%= v.name %></td>
               <td><%= v.brand %></td>
               <td><%= v.codeitem %></td>
+            <%  if(v.Suppliers[0] === undefined){ %>
+                <td>No suppliers yet</td>
+            <%  } else { %>
+                <td>
+                    <ul>
+                        <% v.Suppliers.forEach((v2,i2,a2) => {%>
+                        <li>
+                            <%= `${v2.name} @ ${v2.SupplierItems.price}` %>
+                            <% })%>
+                        </li>
+                        
+                    </ul>
+                </td>
+             <% } %>
+              <td>List Supplier</td>
               <td>
                 <a href= "/items/edit/<%= v.id %>">Edit</a>
                 <a href= "/items/delete/<%= v.id %>">Delete</a>

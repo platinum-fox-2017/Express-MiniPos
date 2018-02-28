@@ -5,14 +5,43 @@
   </head>
     <h1>Search Page</h1>
   <body>
-        <form action="/suppliers/add/" method= "post">
-            Name:<br>
-            <input type="text" name="name" placeholder="Name">
+        <form action="/search/result" method= "post">
+            Item Name:<br>
+            <input type="text" name="name" placeholder="Item Name">
             <br>
-            Kota:<br>
-            <input type="text" name="kota" placeholder="Kota">
-            <br><br>
-            <input type="submit" value="Add Supplier">
-          </form>    
+            Min price:<br>
+            <input type="integer" name="min" placeholder="Minimum value">
+            <br>
+            Max price:<br>
+            <input type="integer" name="max" placeholder="Maximum value">
+            <br>
+            <br>
+            <input type="submit" value="Search">
+          </form>
+
+          <table>
+            <tr>
+              <th>ID</th>
+              <th>Item Name</th>
+              <th>Supplier Name</th>
+              <th>Price</th>
+            </tr>
+            
+              <%  data.forEach((v,i,a) => { %>
+            <tr>
+                <td><%= i+1 %></td>
+                <td><%= `${v.Item.brand} ${v.Item.name}` %></td>
+                <td><%=  v.Supplier.name %></td>
+                <td><%=  v.price %></td>
+            </tr>
+            <%  }) %>
+            
+          </table>
   </body>
 </html>
+
+
+
+
+
+

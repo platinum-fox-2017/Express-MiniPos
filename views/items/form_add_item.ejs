@@ -4,11 +4,7 @@
     <title>Add Item</title>
   </head>
     <h1>Add Item</h1>
-    <h2>
-        <% if(err !== null){%>
-        <%= err %>
-        <%}%>
-    </h2>
+    <% include ../partials/error_message.ejs %>
     <h2><a href ="/items/"></a></h2>
   <body>
         <form action="/items/add/" method= "post">
