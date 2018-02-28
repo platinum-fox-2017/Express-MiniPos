@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>assign item</title>
+  </head>
+  <body>
+    <div class="container">
+      <h2>
+        Add Item for Supplier
+      </h2>
+      <h3>
+        Name : <%= joinData[0].Supplier.name %><br>
+        City : <%= joinData[0].Supplier.city %>
+      </h3>
+      <h3>
+        List Item
+      </h3>
+      <% let arr = [] %>
+      <% joinData.forEach(data => { %>
+        <% arr.push(data.Item.name) %>
+        <li>
+          <%= data.Item.name %> : @ Rp <%= data.price %>
+        </li>
+      <% }) %>
+      <br>
+      <h6>
+      <form action="/supplier/<%= joinData[0].supplierId %>/additem" method="post">
+        <label for="itemId">List Item</label><br>
+        <select name="itemId">
+          <% items.forEach(item => { %>
+            <% if(arr.indexOf(item.name) === -1) { %>
+              <option value="<%= item.id %>" name="itemId"><%= item.name %></option>
+            <% } %>
+          <% }) %>
+        </select><br><br>
+        <label for="price">Price</label><br>
+        <input type="number" name="price" value=""><br><br>
+        <button type="submit">submit</button>
+      </form>
+    </h6>
+    </div>
+  </body>
+</html>

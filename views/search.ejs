@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>search</title>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Looking for Something?</h2>
+      <form action="/search" method="post"><br>
+        <% include ./partials/error %>
+        <label for="item_name">Item Name</label><br>
+        <input type="text" name="item_name" value="" placeholder="Item Name"><br>
+        <label for="max_price">Max Price</label><br>
+        <input type="integer" name="max_price" value="" placeholder="Max Price"><br>
+        <label for="min_price">Min Price</label><br>
+        <input type="integer" name="min_price" value="" placeholder="Min Price"><br>
+        <label for="supplier_name">Supplier Name</label><br>
+        <input type="text" name="supplier_name" value="" placeholder="Supplier Name"><br><br>
+        <input class="btn btn-primary" type="submit" value="submit">
+      </form>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "adhiarta",
+    "password": null,
+    "database": "item_dev",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "adhiarta",
+    "password": null,
+    "database": "item_test",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "adhiarta",
+    "password": null,
+    "database": "item_production",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  }
+}
