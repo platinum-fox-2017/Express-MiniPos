@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <title>
+            WEBSITE MINIPOS
+        </title>
+    </head>
+    <body>
+        <header>
+            <h2>Search Page</h2>
+        </header>
+        <form method="POST">
+            <table birder='0'>
+                <tr>Item Name</tr><br>
+                <tr><input type="text" name="SearchedName"></tr>
+                <tr>
+                    <td>Min Price</td>
+                    <td>Max Price</td>
+                </tr>
+                <tr>
+                    <td><input type="number" name="MinPrice"></td>
+                    <td><input type="number" name="MaxPrice"></td>
+                </tr>
+            </table>
+
+            <input type="submit" value="Search">
+
+            <h2>Search Result</h2>
+            <table border="1">
+                <tr>
+                    <th>Item Name</th>
+                    <th>Supplier Name</th>
+                    <th>Price</th>
+                </tr>
+                <% for (let i = 0; i < arrResult.length; i++) { %>
+                <tr>
+                    <% for (let j = 0; j < arrResult[i].Suppliers.length; j++) { %>
+                        <td><%= arrResult[i].Brand %> <%= arrResult[i].Name %></td>
+                        <td><%= arrResult[i].Suppliers[j].Name%></td>
+                        <td><%= helpers.formatuang(arrResult[i].Suppliers[j].SupplierItem.Price)%></td>
+                    <% } %>
+                </tr>
+                <% } %>
+            </table>
+
+        </form>
+
+
+    </body>
+</html>

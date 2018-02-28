@@ -9,6 +9,7 @@ router.get('/', function(request,response) {
 
 router.use('/items', require('./items.js'));
 router.use('/suppliers', require('./suppliers.js'));
+router.use('/search', require('./search.js'));
 
 module.exports = router;
 
