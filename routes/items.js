@@ -65,7 +65,7 @@ routes.post('/edit/:id',function(req,res){
   },{where:{id:req.body.id}
   }).then(function(){
     res.redirect('/items');
-  }).catch(function(){
+  }).catch(function(err){
     res.redirect(`/items/edit/${req.params.id}?err=${err.message}`);
   })
 })

@@ -23,7 +23,13 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     }
-  }, {});
+  }, {hooks: {
+      beforeBulkDestroy: (user, options) => {
+        sequelize.models.SupplierItem.destroy({
+          where:{ItemId: user.where.id}
+        })
+      }
+    }});
   Item.associate = function(models) {
     Item.belongsToMany(models.Supplier,{through:models.SupplierItem});
   };

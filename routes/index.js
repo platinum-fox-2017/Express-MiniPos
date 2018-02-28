@@ -7,6 +7,6 @@ routes.get('/',function(req,res){
 
 routes.use('/items',require('./items.js'));
 routes.use('/suppliers',require('./suppliers.js'));
-routes.use('/search',require('./search.js'));
+// routes.use('/search',require('./search.js'));
 
 module.exports = routes;
