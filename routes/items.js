@@ -72,7 +72,8 @@ router.get('/delete/:id',(req,res,next) => {
 ;   Items.destroy({
         where: {
             id: item_to_be_deleted,
-        }
+        },
+        individualHooks: true,
     })
     .then(()=> res.redirect('/items/'));
 })

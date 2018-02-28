@@ -25,9 +25,17 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     }
-  },{
+  }, {
     hooks: {
-      
+      afterDestroy: (user, options) => {
+        // console.log(user.id);
+        // console.log(options);
+        sequelize.models.SupplierItems.destroy({
+          where:{
+            ItemId: user.id,
+          }
+        })
+      }
     }
   });
   Items.associate = models => {
