@@ -14,7 +14,7 @@
 
 <body>
     <div class="container">
-        <div class="col-md-6 offset-md-3">
+        <div class="col-md-8 offset-md-2">
             <h1 class="text-center">List Suppliers</h1>
             <a href="/suppliers/add">ADD Suppliers</a>
             <table class="table">
@@ -23,6 +23,8 @@
                         <th scope="col">ID</th>
                         <th scope="col">Name</th>
                         <th scope="col">City</th>
+                        <th scope="col">List Item</th>
+                        <th scope="col">Add Item</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
@@ -37,6 +39,22 @@
                             </td>
                             <td>
                                 <%= data.city %>
+                            </td>
+                            <td>
+                                <% if (data.Items.length != 0 ) { %>
+                                    <ul>
+                                        <% data.Items.map((item)=>{ %>
+                                            <li>
+                                                <%= item.name %>
+                                            </li>
+                                            <% }) %>
+                                    </ul>
+                                    <% }else { %>
+                                        <p>No Items Yet</p>
+                                        <%}%>
+                            </td>
+                            <td>
+                                <a href="suppliers/<%= data.id %>/additem" class="btn btn-primary">Assign Item</a>
                             </td>
                             <td>
                                 <a href="suppliers/edit/<%= data.id %>" class="btn btn-info">Edit</a>

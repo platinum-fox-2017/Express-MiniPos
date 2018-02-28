@@ -1,9 +1,12 @@
-const { Supplier } = require('../models')
+const { Supplier, SupplierItem, Item } = require('../models')
+const money = require('../helpers/price-format')
 
 const ShowAllSuppliers = (req, res) => {
-    Supplier.findAll().then((datas) => {
+    Supplier.findAll({
+        include: [Item]
+    }).then((datas) => {
         // res.send(datas)
-        res.render('suppliers/suppliers', { datas })
+        res.render('suppliers/suppliers', { datas, currency: money })
     }).catch((err) => { console.log(err) })
 }
 
@@ -54,11 +57,43 @@ const deleteDataSupplier = (req, res) => {
     }).catch((err) => { console.log(err) })
 }
 
+const addItemtoSupplier = (req, res) => {
+    // res.send('hello')
+    const supplierId = req.params.supplierId
+
+    Supplier.findById(supplierId).then((dataSupplier) => {
+        SupplierItem.findAll({
+            where: {
+                supplierId: dataSupplier.id
+            }, include: [Item]
+        }).then((SupplierDataItem) => {
+            Item.findAll().then((dataItem) => {
+                // res.send(dataItem)
+                res.render('supplierItems/supplier-items-form', { dataSupplier, SupplierDataItem, dataItem, currency: money })
+            })
+        })
+    })
+        .catch((err) => { console.log(err) })
+}
+
+const saveItemtoSupplier = (req, res) => {
+    const supplierId = req.params.supplierId
+    SupplierItem.create({
+        itemId: req.body.itemId,
+        price: req.body.price,
+        supplierId: supplierId
+    }).then(() => {
+        res.redirect(`/suppliers/${supplierId}/additem`)
+    }).catch((err) => { console.log(err) })
+}
+
 module.exports = {
     ShowAllSuppliers,
     SupplierForm,
     addSupplier,
     editSupplier,
     editDataSupplier,
-    deleteDataSupplier
+    deleteDataSupplier,
+    addItemtoSupplier,
+    saveItemtoSupplier
 }
