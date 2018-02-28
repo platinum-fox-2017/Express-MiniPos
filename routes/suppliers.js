@@ -4,14 +4,12 @@ const Sequelize = require('sequelize')
 const Op = Sequelize.Op
 
 routes.get('/', (req, res)=>{
-  // res.status(200).json({ message: 'Connected!'})
   Models.Supplier.findAll({
     include: [{
       model: Models.Item
     }]
   })
     .then(suppliers=>{
-      // res.send(suppliers)
       res.render('suppliers.ejs', {suppliers: suppliers})
     })
     .catch(err=>{
@@ -20,7 +18,6 @@ routes.get('/', (req, res)=>{
 })
 
 routes.get('/add', (req, res)=>{
-  // res.status(200).json({ message: 'Connected!'})
   res.render('supplier-add.ejs')
 })
 
@@ -39,7 +36,6 @@ routes.post('/add', (req, res)=>{
 })
 
 routes.get('/edit/:id', (req, res)=>{
-  // res.status(200).json({ message: 'Connected!'})
   Models.Supplier.findById(req.params.id)
     .then(supplier => {
       res.render('supplier-edit.ejs', {supplier: supplier})
@@ -50,7 +46,6 @@ routes.get('/edit/:id', (req, res)=>{
 })
 
 routes.post('/edit/:id', (req, res) => {
-  // res.send(req.body)
   let obj = {
     name: req.body.name,
     kota: req.body.kota
@@ -67,7 +62,6 @@ routes.post('/edit/:id', (req, res) => {
 })
 
 routes.get('/delete/:id', (req, res) => {
-  // res.send('yeeeee')
   Models.Supplier.destroy({
     where: {
       id: req.params.id
@@ -80,7 +74,6 @@ routes.get('/delete/:id', (req, res) => {
 })
 
 routes.get('/:id/additem', (req, res) => {
-  // res.render('supp-additem.ejs')
   Models.Supplier.findAll({
     include: [{
       model: Models.Item
@@ -99,7 +92,6 @@ routes.get('/:id/additem', (req, res) => {
         }
       })
       .then(items =>{
-        // res.send(items)
         res.render('supp-additem.ejs', {supplier: supplier[0], items: items})
       })
       .catch(err => {
@@ -111,14 +103,11 @@ routes.get('/:id/additem', (req, res) => {
 })
 
 routes.post('/:id/additem', (req, res) => {
-  // res.send(req.body)
-  // console.log(req.params.id)
   let obj = {
     SupplierId: req.params.id,
     ItemId: req.body.ItemId,
     price: req.body.price
   }
-  // res.send(obj)
   Models.SupplierItem.create(obj)
   .then(() => {
     res.redirect(`/suppliers/${obj.SupplierId}/additem`)

@@ -8,7 +8,6 @@ module.exports = (sequelize, DataTypes) => {
   SupplierItem.associate = function(models) {
     SupplierItem.belongsTo(models.Supplier)
     SupplierItem.belongsTo(models.Item)
-    // associations can be defined here
   };
   return SupplierItem;
 };

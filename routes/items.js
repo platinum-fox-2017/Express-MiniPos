@@ -8,7 +8,6 @@ routes.get('/', (req,res) => {
     }]
   })
     .then(items => {
-      // res.send(items)
       res.render('items.ejs', {items: items})
     })
     .catch(err => {
@@ -17,8 +16,6 @@ routes.get('/', (req,res) => {
 })
 
 routes.get('/add', (req, res)=>{
-  // res.status(200).json({ message: 'Connected!'})
-  // console.log(req.query)
   let err = {
     message: req.query.err,
     name: req.query.name,
@@ -44,8 +41,6 @@ routes.post('/add', (req, res)=>{
 })
 
 routes.get('/edit/:id', (req, res) => {
-  // res.send('yeeee')
-  // console.log(req.query)
   let err = {
     message: req.query.err
   }
@@ -64,7 +59,6 @@ routes.post('/edit/:id', (req, res) => {
     brand: req.body.brand,
     codeitem: req.body.codeitem
   }
-  // res.send(obj)
   Models.Item.update(obj, {
     where: {
       id: req.params.id
@@ -72,7 +66,6 @@ routes.post('/edit/:id', (req, res) => {
   }).then(() => {
     res.redirect('/items')
   }).catch(err => {
-    // console.log(err)
     res.redirect(`/items/edit/${req.params.id}?err=${err.message}&name=${obj.name}&brand=${obj.brand}&codeitem=${obj.codeitem}`)
   })
 })
