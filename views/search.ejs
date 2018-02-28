@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Search</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <h2>Search Page</h2>
+    <form action="/search/item" method="post">
+        Nama Item
+        <br>
+        <input type="text" name="item" placeholder="Nama Item">
+        <br>
+        <br>
+        Min Harga
+        <br>
+        <input type="number" name="min_price" placeholder="Ex: 0">
+        <br>
+        <br>
+        Max Harga
+        <br>
+        <input type="number" name="max_price" placeholder="Ex: 99999999999999">
+        <br>
+        <br>
+        <button type="submit">Cari Item</button>
+    </form>
+    <br>
+    <br>
+    <hr>
+    <h2>Hasil Pencarian</h2>
+    <% if(dataSearch.length > 0 ) { %>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Supplier</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                 <% dataSearch.map(val => { %>
+                    <tr>
+                        <td><%= val.Item.name%></td>
+                        <td><%= val.Supplier.name%></td>
+                        <td><%= val.price%></td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+       
+    <% } %>
+</body>
+</html>

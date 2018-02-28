@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Suppliers</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <h2>Supplier</h2>
+    <a href="/suppliers/add">Add Supplier</a>
+    <br><br>
+    <table border="1">
+        <thead>
+            <tr>
+                <td>Name</td>
+                <td>Kota</td>
+                <td>Add Item</td>
+                <td>Action</td>
+            </tr>
+        </thead>
+        <tbody>
+
+            <% data.map(val => { %>
+                <tr>
+                    <td><%=val.name%></td>
+                    <td><%=val.kota%></td>
+                    <td><a href="/suppliers/<%=val.id%>/addItem">Assign Item</a></td>
+                    <td>
+                        <a href="/suppliers/edit/<%=val.id%>">Edit</a>
+                        <a href="/suppliers/delete/<%=val.id%>">Delete</a>
+                    </td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+    
+</body>
+</html>

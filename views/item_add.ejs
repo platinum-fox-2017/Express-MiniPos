@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Add item</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <h2>Add Item</h2>
+    <% if(err) { %>
+    <p><%= err %></p>
+    
+   <% } %>
+   
+    <form action="/items/add" method="post">
+        <input type="text" name="name" placeholder="Item Name">
+        <br>
+        <br>
+        <input type="text" name="brand" placeholder="Brand">
+        <br>
+        <br>
+        <input type="text" name="codeitem" placeholder="Code Item">
+        <br>
+        <br>
+        <button type="submit">Add</button>
+    </form>
+</body>
+</html>
