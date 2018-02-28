@@ -74,7 +74,9 @@ router.post('/edit/:id', (req,res) => {
 
 router.get('/delete/:id', (req,res) => {
     Item.destroy({
-        where: {id: req.params.id}
+        where: { id: req.params.id },
+        id: req.params.id,
+        individualHooks: true
     })
     .then(data => {
         res.redirect('/items');

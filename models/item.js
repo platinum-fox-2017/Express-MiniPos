@@ -37,14 +37,16 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {
     hooks: {
-      afterBulkDestroy: (option) => {
-        option.individualHooks = true;
+      afterDestroy: (value, option) => {
+        console.log('ini dari hooks', value.id)
         sequelize.models.SupplierItem.destroy({
           where: {
-            itemId: option.id
+            ItemId: value.id
           }
         })
-        .then(() => {})
+        .then(() => {
+          console.log('SUCCESS CONJ DATA')
+        })
         .catch(err => { 
           console.log(err)
         })
