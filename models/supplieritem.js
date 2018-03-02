@@ -4,12 +4,10 @@ module.exports = (sequelize, DataTypes) => {
     supplierId: DataTypes.INTEGER,
     itemId: DataTypes.INTEGER,
     price: DataTypes.INTEGER
-  }, {
-    classMethods: {
-      associate: function(models) {
-        // associations can be defined here
-      }
-    }
   });
+  SupplierItem.associate = function (models) {
+    SupplierItem.belongsTo(models.Item, { foreignKey: 'itemId' })
+    SupplierItem.belongsTo(models.Supplier, { foreignKey: 'supplierId' })
+  };
   return SupplierItem;
 };

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Assign Item</title>
+</head>
+<body>
+    <center>
+        <h2>Add Item for Supplier</h2>
+        <div>
+            <p><%=dataConj[0].Supplier.name%></p>
+            <p><%=dataConj[0].Supplier.city%></p>
+        </div>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>List Item</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <%dataConj.map(element => {%>
+                <tr>
+                    <td><%=element.Item.name%></td>
+                    <td><%=currencyHelper(element.price)%></td>
+                </tr>
+                <%})%>
+            </tbody>
+        </table>
+        <br>
+        <div>
+            <form action="" method="POST">
+                <select name="itemId">
+                    <%dataItem.map(element => {%>
+                    <option value="<%=element.id%>"><%=element.name%></option>
+                    <%})%>
+                </select>
+                <input type="text" name="price" id="price" placeholder="eg: 4800000">
+                <button type="submit">Add</button>
+            </form>
+        </div>
+    </center>
+</body>
+</html>
